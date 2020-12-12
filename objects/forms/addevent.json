@@ -26,7 +26,6 @@
           "type": "string",
           "title": "Форма мероприятия",
           "description": "Выберите из списка"
-        
         },
         "theme": {
           "type": "string",
@@ -47,13 +46,10 @@
           "type": "boolean",
           "title": "Место хранения медиа-отчета"
         },
-       
-     
-        "title": 
-          {
-            "type": "string",
-            "title": "Название мероприятия",
-            "description": "Введите название мероприятия"
+        "title": {
+          "type": "string",     
+          "title": "Название мероприятия",
+          "description": "Введите название мероприятия"
           },
         "description": {
           "type": "string",
