@@ -34,7 +34,7 @@
         },
         "hasPoster": {
           "type": "boolean",
-          "title": "Была ли афиша"
+          "title": "Была ли афиша?"
         },
         "hasPhotos": {
           "type": "boolean",
