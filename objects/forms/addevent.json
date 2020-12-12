@@ -21,16 +21,12 @@
           "format": "date",
           "title": "Окончание мероприятия",
           "type": "string"
-      },
+        },
         "eventForm": {
           "type": "string",
           "title": "Форма мероприятия",
           "description": "Выберите из списка"
-        },
-        "owner": {
-          "type": "string",
-          "title": "Организатор (Фамилия И. О.)",
-          "description": "ручной ввод фамилии библиотекаря"
+        
         },
         "theme": {
           "type": "string",
@@ -98,6 +94,10 @@
         "newsLink" : {
           "type": "string",
           "title": "Ссылка на новость",
-        }
+        },
+        "owner": {
+          "type": "string",
+          "title": "Организатор (Фамилия И. О.)",
+          "description": "Ручной ввод фамилии библиотекаря"
     }
 }
