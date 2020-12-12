@@ -20,12 +20,15 @@
         "endDate": {
           "format": "date",
           "title": "Окончание мероприятия",
-          "type": "string"
+          "type": "string",
+          "required" : true
         },
         "eventForm": {
           "type": "string",
           "title": "Форма мероприятия",
-          "description": "Выберите из списка"
+          "description": "Выберите из списка",
+          "required" : true
+
         },
         "title": {
           "type": "string",     
@@ -44,7 +47,7 @@
         },
         "visitorCount": {
           "type": "integer",
-          "title": "Количество участников",
+          "title": "Количество участников"
         },
         "childVisitorCount": {
           "type": "integer",
@@ -70,7 +73,7 @@
         "hasPoster": {
           "type": "boolean",
           "title": "Была ли подготовлена афиша?",
-          "description": "Да",
+          "default": ДА
         },
         "newsLink" : {
           "type": "string",
@@ -94,10 +97,7 @@
         "author": {
           "type": "string",
           "title": "Регистратор мероприятия",
-          "description": "Тут должен подставляться пользователь, который зашел в систему"
-   
-       
-        
-        
-    }
+          "description": "ФИО оператора, по данным авторизации"  
+        } 
+     }
 }
