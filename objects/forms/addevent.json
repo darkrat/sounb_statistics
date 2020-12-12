@@ -20,7 +20,7 @@
         "owner": {
           "type": "string",
           "title": "Организатор (Фамилия И. О.)",
-          "description": "переделать на справочник"
+          "description": "ручной ввод фамилии"
         },
         "theme": {
           "type": "string",
