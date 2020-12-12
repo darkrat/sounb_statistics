@@ -20,12 +20,12 @@
         "owner": {
           "type": "string",
           "title": "Организатор (Фамилия И. О.)",
-          "description": "ручной ввод фамилии"
+          "description": "ручной ввод фамилии библиотекаря"
         },
         "theme": {
           "type": "string",
           "title": "Тема",
-          "description": "переделать на справочник"
+          "description": "Выберите из списка"
         },
         "expositionTitle": {
           "type": "string",
