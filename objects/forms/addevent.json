@@ -27,40 +27,15 @@
           "title": "Форма мероприятия",
           "description": "Выберите из списка"
         },
+        "title": {
+          "type": "string",     
+          "title": "Название мероприятия",
+          "description": "Введите название мероприятия"  
+        },
         "theme": {
           "type": "string",
           "title": "Тема",
           "description": "Выберите из списка"
-        },
-        "expositionTitle": {
-          "type": "string",
-          "title": "Название выставки",
-          "description": "Введите название выставки"
-        },
-        "hasPoster": {
-          "type": "boolean",
-          "title": "Была ли подготовлена афиша?",
-          "description": "Да"
-        },
-        "hasPhotos": {
-          "type": "boolean",
-          "title": "Место хранения медиа-отчета"
-        },
-        "title": {
-          "type": "string",     
-          "title": "Название мероприятия",
-          "description": "Введите название мероприятия"
-          },
-        "description": {
-          "type": "string",
-          "title": "Описание",
-          "format": "text",
-          "description": "Опишите мероприятие"
-        },
-        "author": {
-          "type": "string",
-          "title": "Регистратор мероприятия",
-          "description": "Тут должен подставляться пользователь, который зашел в систему"
         },
         "location": {
           "type": "string",
@@ -79,6 +54,32 @@
           "type": "integer",
           "title": "..от 14 до 18 лет",
         },
+        "expositionTitle": {
+          "type": "string",
+          "title": "Название сопровождающей выставки",
+          "description": "Введите название выставки"
+        },
+        "hasPoster": {
+          "type": "boolean",
+          "title": "Была ли подготовлена афиша?",
+          "description": "Да"
+        },
+        "hasPhotos": {
+          "type": "boolean",
+          "title": "Место хранения медиа-отчета"
+        },
+        "description": {
+          "type": "string",
+          "title": "Описание",
+          "format": "text",
+          "description": "Опишите мероприятие"
+        },
+        "author": {
+          "type": "string",
+          "title": "Регистратор мероприятия",
+          "description": "Тут должен подставляться пользователь, который зашел в систему"
+        
+        
         "booksOnDisplayCount": {
           "type": "integer",
           "title": "Количество выставвленых книг",
