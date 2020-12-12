@@ -9,17 +9,17 @@
         },
         "department": {
           "type": "string",
-          "title": "Отдел",
+          "title": "Отдел-организатор",
           "description": "Выберите из списка"
         },
         "eventForm": {
           "type": "string",
           "title": "Форма мероприятия",
-          "description": "переделать на справочник"
+          "description": "Выберите из списка"
         },
         "owner": {
           "type": "string",
-          "title": "Организатор (ФИО)",
+          "title": "Организатор (Фамилия И. О.)",
           "description": "переделать на справочник"
         },
         "theme": {
