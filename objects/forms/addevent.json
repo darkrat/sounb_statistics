@@ -70,7 +70,11 @@
         "hasPoster": {
           "type": "boolean",
           "title": "Была ли подготовлена афиша?",
-          "description": "Да"
+          "description": "Да",
+        },
+        "newsLink" : {
+          "type": "string",
+          "title": "Ссылка на новость",
         },
         "hasPhotos": {
           "type": "boolean",
@@ -78,25 +82,22 @@
         },
         "description": {
           "type": "string",
-          "title": "Описание",
+          "title": "Описание содержания мероприятия",
           "format": "text",
           "description": "Опишите мероприятие"
-        },
-        "author": {
-          "type": "string",
-          "title": "Регистратор мероприятия",
-          "description": "Тут должен подставляться пользователь, который зашел в систему"
-        
-        
-        
-        },
-        "newsLink" : {
-          "type": "string",
-          "title": "Ссылка на новость",
         },
         "owner": {
           "type": "string",
           "title": "Организатор (Фамилия И. О.)",
           "description": "Ручной ввод фамилии библиотекаря"
+        },
+        "author": {
+          "type": "string",
+          "title": "Регистратор мероприятия",
+          "description": "Тут должен подставляться пользователь, который зашел в систему"
+   
+       
+        
+        
     }
 }
