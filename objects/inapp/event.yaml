@@ -1,0 +1,21 @@
+id: 1
+eventTypeId: 1
+departmentId: 1
+eventFormId: 1
+userId: 1
+themeid: 1
+expositionTitle: "New"
+hasPoster: true
+hasPhotos: true
+startDate: ""
+endDate: ""
+title: "New"
+description: "simple new"
+author: "Jane K."
+location: ""
+visitorCount: 12
+childVisitorCount: 5
+juniorVisitorCount: 3
+booksOnDisplayCount: 10
+issuedBooksCount: 12
+newsLink: "https://new.io"

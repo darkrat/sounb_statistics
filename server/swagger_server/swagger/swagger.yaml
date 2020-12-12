@@ -1,0 +1,611 @@
+---
+swagger: "2.0"
+info:
+  description: "СТАТИСТИКА СОУНБ"
+  version: "1.0.0"
+  title: "Swagger SOUNB statistic"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "gorshkov@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "95.82.251.136"
+basePath: "/v1"
+tags:
+- name: "event_service"
+  description: "Service of event registration"
+  externalDocs:
+    description: "Find out more"
+    url: "https://github.com/darkrat/sounb_statistics"
+schemes:
+- "https"
+- "http"
+paths:
+  /event:
+    post:
+      tags:
+      - "event"
+      summary: "Add a new event to the store"
+      description: ""
+      operationId: "add_event"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Event object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/Event"
+      responses:
+        "405":
+          description: "Invalid input"
+      security:
+      - eventstore_auth:
+        - "write:event"
+        - "read:event"
+      x-swagger-router-controller: "swagger_server.controllers.event_controller"
+    put:
+      tags:
+      - "event"
+      summary: "Update an existing event"
+      description: ""
+      operationId: "update_event"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Event object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/Event"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Event not found"
+        "405":
+          description: "Validation exception"
+      security:
+      - eventstore_auth:
+        - "write:event"
+        - "read:event"
+      x-swagger-router-controller: "swagger_server.controllers.event_controller"
+  /event/search:
+    get:
+      tags:
+      - "event"
+      summary: "Finds Events by params"
+      description: "Multiple status values can be provided with comma separated strings"
+      operationId: "search_events"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "startDate"
+        in: "query"
+        description: "Status values that need to be considered for filter"
+        required: false
+        type: "string"
+      - name: "endDate"
+        in: "query"
+        description: "Status values that need to be considered for filter"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Event"
+        "400":
+          description: "Invalid status value"
+      security:
+      - eventstore_auth:
+        - "write:event"
+        - "read:event"
+      x-swagger-router-controller: "swagger_server.controllers.event_controller"
+  /event/{eventId}:
+    get:
+      tags:
+      - "event"
+      summary: "Find event by ID"
+      description: "Returns a single event"
+      operationId: "get_event_by_id"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "eventId"
+        in: "path"
+        description: "ID of event to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Event"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Event not found"
+      security:
+      - api_key: []
+      x-swagger-router-controller: "swagger_server.controllers.event_controller"
+    post:
+      tags:
+      - "event"
+      summary: "Updates a event in the store with form data"
+      description: ""
+      operationId: "update_event_with_form"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "eventId"
+        in: "path"
+        description: "ID of event that needs to be updated"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "405":
+          description: "Invalid input"
+      security:
+      - eventstore_auth:
+        - "write:event"
+        - "read:event"
+      x-swagger-router-controller: "swagger_server.controllers.event_controller"
+    delete:
+      tags:
+      - "event"
+      summary: "Deletes a event"
+      description: ""
+      operationId: "delete_event"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "eventId"
+        in: "path"
+        description: "Event id to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Event not found"
+      security:
+      - eventstore_auth:
+        - "write:event"
+        - "read:event"
+      x-swagger-router-controller: "swagger_server.controllers.event_controller"
+  /user:
+    post:
+      tags:
+      - "user"
+      summary: "Create user"
+      description: "This can only be done by the logged in user."
+      operationId: "create_user"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created user object"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        default:
+          description: "successful operation"
+      x-swagger-router-controller: "swagger_server.controllers.user_controller"
+  /user/createWithArray:
+    post:
+      tags:
+      - "user"
+      summary: "Creates list of users with given input array"
+      description: ""
+      operationId: "create_users_with_array_input"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "List of user object"
+        required: true
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/User"
+      responses:
+        default:
+          description: "successful operation"
+      x-swagger-router-controller: "swagger_server.controllers.user_controller"
+  /user/createWithList:
+    post:
+      tags:
+      - "user"
+      summary: "Creates list of users with given input array"
+      description: ""
+      operationId: "create_users_with_list_input"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "List of user object"
+        required: true
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/User"
+      responses:
+        default:
+          description: "successful operation"
+      x-swagger-router-controller: "swagger_server.controllers.user_controller"
+  /user/login:
+    get:
+      tags:
+      - "user"
+      summary: "Logs user into the system"
+      description: ""
+      operationId: "login_user"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "query"
+        description: "The user name for login"
+        required: true
+        type: "string"
+      - name: "password"
+        in: "query"
+        description: "The password for login in clear text"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          headers:
+            X-Rate-Limit:
+              type: "integer"
+              format: "int32"
+              description: "calls per hour allowed by the user"
+            X-Expires-After:
+              type: "string"
+              format: "date-time"
+              description: "date in UTC when token expires"
+          schema:
+            type: "string"
+        "400":
+          description: "Invalid username/password supplied"
+      x-swagger-router-controller: "swagger_server.controllers.user_controller"
+  /user/logout:
+    get:
+      tags:
+      - "user"
+      summary: "Logs out current logged in user session"
+      description: ""
+      operationId: "logout_user"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters: []
+      responses:
+        default:
+          description: "successful operation"
+      x-swagger-router-controller: "swagger_server.controllers.user_controller"
+  /user/{username}:
+    get:
+      tags:
+      - "user"
+      summary: "Get user by user name"
+      description: ""
+      operationId: "get_user_by_name"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "path"
+        description: "The name that needs to be fetched. Use user1 for testing. "
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/User"
+        "400":
+          description: "Invalid username supplied"
+        "404":
+          description: "User not found"
+      x-swagger-router-controller: "swagger_server.controllers.user_controller"
+    put:
+      tags:
+      - "user"
+      summary: "Updated user"
+      description: "This can only be done by the logged in user."
+      operationId: "update_user"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "path"
+        description: "name that need to be updated"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Updated user object"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        "400":
+          description: "Invalid user supplied"
+        "404":
+          description: "User not found"
+      x-swagger-router-controller: "swagger_server.controllers.user_controller"
+    delete:
+      tags:
+      - "user"
+      summary: "Delete user"
+      description: "This can only be done by the logged in user."
+      operationId: "delete_user"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "path"
+        description: "The name that needs to be deleted"
+        required: true
+        type: "string"
+      responses:
+        "400":
+          description: "Invalid username supplied"
+        "404":
+          description: "User not found"
+      x-swagger-router-controller: "swagger_server.controllers.user_controller"
+securityDefinitions:
+  eventstore_auth:
+    type: "oauth2"
+    authorizationUrl: "http://95.82.251.136/oauth/dialog"
+    flow: "implicit"
+    scopes:
+      write:event: "modify event in your account"
+      read:event: "read your event"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+  Theme:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+    xml:
+      name: "Theme"
+    example:
+      name: "name"
+      id: 6
+  EventForm:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+    xml:
+      name: "EventForm"
+    example:
+      name: "name"
+      id: 5
+  Department:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+    xml:
+      name: "Department"
+    example:
+      name: "name"
+      id: 2
+  EventType:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+    xml:
+      name: "EventType"
+    example:
+      name: "name"
+      id: 7
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      patronymicName:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      username:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+      phone:
+        type: "string"
+      userStatus:
+        type: "integer"
+        format: "int32"
+        description: "User Status"
+    xml:
+      name: "User"
+    example:
+      firstName: "firstName"
+      lastName: "lastName"
+      password: "password"
+      userStatus: 5
+      phone: "phone"
+      patronymicName: "patronymicName"
+      id: 1
+      email: "email"
+      username: "username"
+  Event:
+    type: "object"
+    required:
+    - "title"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      theme:
+        $ref: "#/definitions/Theme"
+      owner:
+        $ref: "#/definitions/User"
+      eventForm:
+        $ref: "#/definitions/EventForm"
+      department:
+        $ref: "#/definitions/Department"
+      eventType:
+        $ref: "#/definitions/EventType"
+      title:
+        type: "string"
+        example: "doggie"
+      expositionTitle:
+        type: "string"
+      hasPoster:
+        type: "boolean"
+        default: false
+      hasPhotos:
+        type: "boolean"
+        default: false
+      startDate:
+        type: "string"
+        format: "date-time"
+      endDate:
+        type: "string"
+        format: "date-time"
+      description:
+        type: "string"
+      author:
+        type: "string"
+      location:
+        type: "string"
+      visitorCount:
+        type: "integer"
+        format: "int64"
+      childVisitorCount:
+        type: "integer"
+        format: "int64"
+      juniorVisitorCount:
+        type: "integer"
+        format: "int64"
+      booksOnDisplayCount:
+        type: "integer"
+        format: "int64"
+      issuedBooksCount:
+        type: "integer"
+        format: "int64"
+        description: "Количество вданных книг"
+      newsLink:
+        type: "string"
+    xml:
+      name: "Event"
+    example:
+      owner:
+        firstName: "firstName"
+        lastName: "lastName"
+        password: "password"
+        userStatus: 5
+        phone: "phone"
+        patronymicName: "patronymicName"
+        id: 1
+        email: "email"
+        username: "username"
+      endDate: "2000-01-23T04:56:07.000+00:00"
+      hasPoster: false
+      hasPhotos: false
+      author: "author"
+      visitorCount: 9
+      juniorVisitorCount: 2
+      eventForm:
+        name: "name"
+        id: 5
+      expositionTitle: "expositionTitle"
+      description: "description"
+      eventType:
+        name: "name"
+        id: 7
+      title: "doggie"
+      newsLink: "newsLink"
+      childVisitorCount: 3
+      theme:
+        name: "name"
+        id: 6
+      location: "location"
+      id: 0
+      booksOnDisplayCount: 4
+      department:
+        name: "name"
+        id: 2
+      startDate: "2000-01-23T04:56:07.000+00:00"
+      issuedBooksCount: 7
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      type:
+        type: "string"
+      message:
+        type: "string"
+externalDocs:
+  description: "Find out more about sounb statistics"
+  url: "https://github.com/darkrat/sounb_statistics/wiki"

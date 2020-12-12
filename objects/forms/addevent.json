@@ -1,0 +1,100 @@
+{
+    "$schema": "http://json-schema.org/draft-03/schema#",
+    "type": "object",
+    "properties": {
+        "eventType" : {
+          "type": "string",
+          "title": "Тип мероприятия",
+          "description": "переделать на справочник"
+        },
+        "department": {
+          "type": "string",
+          "title": "Отдел",
+          "description": "переделать на справочник"
+        },
+        "eventForm": {
+          "type": "string",
+          "title": "Форма мероприятия",
+          "description": "переделать на справочник"
+        },
+        "owner": {
+          "type": "string",
+          "title": "Организатор (ФИО)",
+          "description": "переделать на справочник"
+        },
+        "theme": {
+          "type": "string",
+          "title": "Тема",
+          "description": "переделать на справочник"
+        },
+        "expositionTitle": {
+          "type": "string",
+          "title": "Название выставки",
+          "description": "Введите название выставки"
+        },
+        "hasPoster": {
+          "type": "boolean",
+          "title": "Была ли афиша"
+        },
+        "hasPhotos": {
+          "type": "boolean",
+          "title": "Были ли фотографии"
+        },
+        "startDate": {
+          "format": "date",
+          "title": "Начало мероприятия",
+          "type": "string"
+      },
+        "endDate": {
+          "format": "date",
+          "title": "Окончание мероприятия",
+          "type": "string"
+      },
+        "title": 
+          {
+            "type": "string",
+            "title": "Название мероприятия",
+            "description": "Введите название мероприятия"
+          },
+        "description": {
+          "type": "string",
+          "title": "Описание",
+          "format": "text",
+          "description": "Опишите мероприятие"
+        },
+        "author": {
+          "type": "string",
+          "title": "Регистратор мероприятия",
+          "description": "Тут должен подставляться пользователь, который зашел в систему"
+        },
+        "location": {
+          "type": "string",
+          "title": "Место провидения",
+          "description": "Двор, усадьба, улица и etc."
+        },
+        "visitorCount": {
+          "type": "integer",
+          "title": "Количество участников",
+        },
+        "childVisitorCount": {
+          "type": "integer",
+          "title": ".. из них детей 14 лет",
+        },
+        "juniorVisitorCount": {
+          "type": "integer",
+          "title": "..от 14 до 18 лет",
+        },
+        "booksOnDisplayCount": {
+          "type": "integer",
+          "title": "Количество выставвленых книг",
+        },
+        "issuedBooksCount": {
+          "type": "integer",
+          "title": "Количество выданных книг",
+        },
+        "newsLink" : {
+          "type": "string",
+          "title": "Ссылка на новость",
+        }
+    }
+}
