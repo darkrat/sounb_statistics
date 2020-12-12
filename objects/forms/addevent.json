@@ -5,12 +5,12 @@
         "eventType" : {
           "type": "string",
           "title": "Тип мероприятия",
-          "description": "переделать на справочник"
+          "description": "Массовое мероприятие"
         },
         "department": {
           "type": "string",
           "title": "Отдел",
-          "description": "переделать на справочник"
+          "description": "Выберите из списка"
         },
         "eventForm": {
           "type": "string",
