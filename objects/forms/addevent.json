@@ -12,6 +12,16 @@
           "title": "Отдел-организатор",
           "description": "Выберите из списка"
         },
+        "startDate": {
+          "format": "date",
+          "title": "Начало мероприятия",
+          "type": "string"
+        },
+        "endDate": {
+          "format": "date",
+          "title": "Окончание мероприятия",
+          "type": "string"
+      },
         "eventForm": {
           "type": "string",
           "title": "Форма мероприятия",
@@ -39,18 +49,10 @@
         },
         "hasPhotos": {
           "type": "boolean",
-          "title": "Были ли фотографии"
+          "title": "Место хранения медиа-отчета"
         },
-        "startDate": {
-          "format": "date",
-          "title": "Начало мероприятия",
-          "type": "string"
-      },
-        "endDate": {
-          "format": "date",
-          "title": "Окончание мероприятия",
-          "type": "string"
-      },
+       
+     
         "title": 
           {
             "type": "string",
