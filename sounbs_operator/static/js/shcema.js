@@ -1,0 +1,114 @@
+var schema = {
+    "$schema": "http://json-schema.org/draft-03/schema#",
+    "type": "object",
+    "properties": {
+        "eventType" : {
+          "type": "string",
+          "title": "Тип мероприятия",
+          "description": "Массовое мероприятие",
+          "required" : true
+        },
+        "department": {
+          "type": "string",
+          "title": "Отдел-организатор",
+          "description": "Выберите из списка",
+          "required" : true
+        },
+        "startDate": {
+          "format": "date",
+          "title": "Начало мероприятия",
+          "type": "string"
+        },
+        "endDate": {
+          "format": "date",
+          "title": "Окончание мероприятия",
+          "type": "string",
+          "required" : true
+        },
+        "eventForm": {
+          "type": "string",
+          "title": "Форма мероприятия",
+          "description": "Выберите из списка",
+          "required" : true
+        },
+        "title": {
+          "type": "string",     
+          "title": "Название мероприятия",
+          "description": "Введите название мероприятия",
+          "required" : true
+        },
+        "theme": {
+          "type": "string",
+          "title": "Тема",
+          "description": "Выберите из списка",
+          "required" : true
+        },
+        "location": {
+          "type": "string",
+          "title": "Место провидения",
+          "description": "Двор, усадьба, улица и etc.",
+          "required" : true
+        },
+        "visitorCount": {
+          "type": "integer",
+          "title": "Количество участников",
+          "required" : true
+        },
+        "childVisitorCount": {
+          "type": "integer",
+          "title": ".. из них детей 14 лет",
+          "required" : true
+        },
+        "juniorVisitorCount": {
+          "type": "integer",
+          "title": "..от 14 до 18 лет",
+          "required" : true
+        },
+        "expositionTitle": {
+          "type": "string",
+          "title": "Название сопровождающей выставки",
+          "description": "Введите название выставки"
+        },
+        "booksOnDisplayCount": {
+          "type": "integer",
+          "title": "Количество выставвленых книг"
+        },
+        "issuedBooksCount": {
+          "type": "integer",
+          "title": "Количество выданных книг"
+        },
+        "hasPoster": {
+          "type": "boolean",
+          "title": "Была ли подготовлена афиша?",
+          "default": "Да",
+          "required" : true
+        },
+        "newsLink" : {
+          "type": "string",
+          "title": "Ссылка на новость"
+        },
+        "hasPhotos": {
+          "type": "boolean",
+          "title": "Место хранения медиа-отчета"
+        },
+        "description": {
+          "type": "string",
+          "title": "Описание содержания мероприятия",
+          "format": "text",
+          "description": "Опишите мероприятие",
+          "required" : true
+        },
+        "owner": {
+          "type": "string",
+          "title": "Организатор (Фамилия И. О.)",
+          "description": "Ручной ввод фамилии библиотекаря",
+          "required" : true
+        },
+        "author": {
+          "type": "string",
+          "title": "Регистратор мероприятия",
+          "description": "ФИО оператора, по данным авторизации",
+          "required" : true
+        } 
+     }
+}
