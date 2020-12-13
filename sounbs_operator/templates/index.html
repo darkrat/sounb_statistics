@@ -9,7 +9,7 @@
 <script src="{% static 'js/brutusin-json-forms.js'%}" crossorigin="anonymous"></script>
 <script src="{% static 'js/brutusin-json-forms-bootstrap.min.js'%}" crossorigin="anonymous"></script>
 <script lang="javascript">
-            var schema = {% include addevent.json %}
+            var schema = {% include 'addevent.json' %}
             var data = null;
             var BrutusinForms = brutusin["json-forms"];
             var bf = BrutusinForms.create(schema);
