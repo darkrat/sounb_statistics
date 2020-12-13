@@ -7,22 +7,22 @@ from .models import Department,Event,EventForm,EventType,Theme
 # Create your views here.
 
 # Department
-class DepartmentView(viewsets.ViewSet):
+class DepartmentView(viewsets.ModelViewSet):
     serializer_class = ListSerializer
     queryset = Department.objects.all()
 #EventType
-class EventTypeView(viewsets.ViewSet):
+class EventTypeView(viewsets.ModelViewSet):
     serializer_class = ListSerializer
     queryset = EventType.objects.all()
 #EventForm
-class EventFormView(viewsets.ViewSet):
+class EventFormView(viewsets.ModelViewSet):
     serializer_class = ListSerializer
     queryset = EventForm.objects.all()
 #Theme
-class ThemeView(viewsets.ViewSet):
+class ThemeView(viewsets.ModelViewSet):
     serializer_class = ListSerializer
     queryset = Theme.objects.all()
 #Event
-class EventView(viewsets.ViewSet):
+class EventView(viewsets.ModelViewSet):
     serializer_class = EventSerializer
     queryset = Event.objects.all()
