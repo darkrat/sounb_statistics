@@ -1,39 +1,28 @@
-from django.shortcuts import render
-
+from django.shortcuts import get_object_or_404
+from rest_framework import viewsets
 from rest_framework.response import Response
-from rest_framework.views import APIView
-from .serializers import ListSerializer
+from .serializers import ListSerializer, EventSerializer
 
 from .models import Department,Event,EventForm,EventType,Theme
 # Create your views here.
 
 # Department
-class DepartmentView(APIView):
-    def get(self, request):
-        objects = Department.objects.all()
-        serializer = ListSerializer(objects, many=True)
-        return Response({"departments": serializer.data})
+class DepartmentView(viewsets.ViewSet):
+    serializer_class = ListSerializer
+    queryset = Department.objects.all()
 #EventType
-class EventTypeView(APIView):
-    def get(self, request):
-        objects = EventType.objects.all()
-        serializer = ListSerializer(objects, many=True)
-        return Response({"eventtypes": serializer.data})
+class EventTypeView(viewsets.ViewSet):
+    serializer_class = ListSerializer
+    queryset = EventType.objects.all()
 #EventForm
-class EventFormView(APIView):
-    def get(self, request):
-        objects = EventForm.objects.all()
-        serializer = ListSerializer(objects, many=True)
-        return Response({"eventforms": serializer.data})
+class EventFormView(viewsets.ViewSet):
+    serializer_class = ListSerializer
+    queryset = EventForm.objects.all()
 #Theme
-class ThemeView(APIView):
-    def get(self, request):
-        objects = Theme.objects.all()
-        serializer = ListSerializer(objects, many=True)
-        return Response({"themes": serializer.data})
+class ThemeView(viewsets.ViewSet):
+    serializer_class = ListSerializer
+    queryset = Theme.objects.all()
 #Event
-class EventView(APIView):
-    def get(self, request):
-        objects = Event.objects.all()
-        serializer = ListSerializer(objects, many=True)
-        return Response({"events": serializer.data})
+class EventView(viewsets.ViewSet):
+    serializer_class = EventSerializer
+    queryset = Event.objects.all()
