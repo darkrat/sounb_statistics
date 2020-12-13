@@ -6,6 +6,8 @@
 
 <h1>Hello, World!</h1>
 <div id="container" style="padding-left:12px;padding-right:12px;padding-bottom: 12px;"></div>
+<script src="{% static 'js/brutusin-json-forms.js'%}" crossorigin="anonymous"></script>
+<script src="{% static 'js/brutusin-json-forms-bootstrap.min.js'%}" crossorigin="anonymous"></script>
 <script lang="javascript">
             var schema = {"type": "boolean"}
             var BrutusinForms = brutusin["json-forms"];
@@ -13,6 +15,5 @@
             var container = document.getElementById('container');
             bf.render(container, data);
         </script>
-<script src="{% static 'js/brutusin-json-forms.js'%}" crossorigin="anonymous"></script>
-<script src="{% static 'js/brutusin-json-forms-bootstrap.min.js'%}" crossorigin="anonymous"></script>
+
 {% endblock %}
