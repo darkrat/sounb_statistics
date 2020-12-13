@@ -8,8 +8,8 @@
 <div id="container" style="padding-left:12px;padding-right:12px;padding-bottom: 12px;"></div>
 <script src="{% static 'js/brutusin-json-forms.js'%}" crossorigin="anonymous"></script>
 <script src="{% static 'js/brutusin-json-forms-bootstrap.min.js'%}" crossorigin="anonymous"></script>
-<script src="{% static 'js/schema.js'%}" crossorigin="anonymous"></script>
 <script lang="javascript">
+            var schema = {% include addevent.json %}
             var data = null;
             var BrutusinForms = brutusin["json-forms"];
             var bf = BrutusinForms.create(schema);
