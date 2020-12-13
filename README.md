@@ -21,11 +21,11 @@ for apache
 #pip3 install mod_wsgi
 sudo apt-get install libapache2-mod-wsgi
 
-/var/www/django/sounb_statistics/sounb_statistics
+Apach2 config
 <VirtualHost *:80>
     #ServerName example.com
 
-    WSGIDaemonProcess example_com processes=2 threads=15 display-name=%{GROUP} python-path=/var/www/django/sounb_statistics
+    WSGIDaemonProcess sounb_statistics processes=2 threads=15 display-name=%{GROUP} python-path=/var/www/django/sounb_statistics
     WSGIProcessGroup sounb_statistics
 
     WSGIScriptAlias / /var/www/django/sounb_statistics/sounb_statistics/wsgi.py
@@ -37,8 +37,8 @@ sudo apt-get install libapache2-mod-wsgi
 
     LogLevel warn
 
-    Alias /static/ /var/www/example_com//var/www/django/sounb_statistics/static/
-    <Directory /var/www/example_com/>
+    Alias /static/ /var/www/django/sounb_statistics/static/
+    <Directory /var/www/django/sounb_statistics/>
         Options Indexes MultiViews FollowSymLinks
         AllowOverride None
         Order deny,allow
