@@ -1,8 +1,9 @@
 {% extends "base.html" %}
+
+{% block page_content %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'sounbs_operator/css/brutusin-json-forms.min.css' %}" crossorigin="anonymous">
 
-{% block page_content %}
 <h1>Hello, World!</h1>
 <div id="container" style="padding-left:12px;padding-right:12px;padding-bottom: 12px;"></div>
 <script lang="javascript">
@@ -12,6 +13,6 @@
             var container = document.getElementById('container');
             bf.render(container, data);
         </script>
-{% endblock %}
 <script src="{% static 'sounbs_operator/js/brutusin-json-forms-bootstrap.min.js'%}" crossorigin="anonymous"></script>
 <script src="{% static 'sounbs_operator/js/brutusin-json-forms.js'%}" crossorigin="anonymous"></script>
+{% endblock %}
