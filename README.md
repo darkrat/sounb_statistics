@@ -7,9 +7,9 @@ http://brutusin.org/json-forms/
 
 Startup:
 sudo apt-get install python3
-pip install django
-pip install djangorestframework
+pip3 install django
+pip3 install djangorestframework
 django-admin startproject test_django
-python manage.py migrate
-python manage.py createsuperuser
-python manage.py runserver 0:8080
+python3 manage.py migrate
+python3 manage.py createsuperuser
+python3 manage.py runserver 0:8080
