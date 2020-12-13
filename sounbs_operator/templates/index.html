@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'sounbs_operator/css/brutusin-json-forms.min.css' %}" crossorigin="anonymous">
 
 {% block page_content %}
 <h1>Hello, World!</h1>
@@ -11,3 +13,5 @@
             bf.render(container, data);
         </script>
 {% endblock %}
+<script src="{% static 'sounbs_operator/js/brutusin-json-forms-bootstrap.min.js'%}" crossorigin="anonymous"></script>
+<script src="{% static 'sounbs_operator/js/brutusin-json-forms.js'%}" crossorigin="anonymous"></script>
