@@ -24,7 +24,7 @@ class Theme(models.Model):
 
 class Event(models.Model):
     EventType = models.ForeignKey('EventType', on_delete=models.CASCADE, verbose_name='Тип мероприятия',help_text='Массовое мероприятие')
-    Department =models.ForeignKey('Department', on_delete=models.CASCADE, verbose_name='Отдел-организатор',help_text='Выберите из списка')
+    Department = models.ForeignKey('Department', on_delete=models.CASCADE, verbose_name='Отдел-организатор',help_text='Выберите из списка')
     EventForm = models.ForeignKey('EventForm', on_delete=models.CASCADE, verbose_name='',help_text='Выберите из списка')
     Owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name='Оператор')
     Theme = models.ForeignKey('Theme', on_delete=models.CASCADE, verbose_name='Тема мероприятия',help_text='Выберите из списка')
@@ -43,6 +43,6 @@ class Event(models.Model):
     BooksOnDisplayCount = models.IntegerField(verbose_name='Количество выставвленых книг')
     IssuedBooksCount = models.IntegerField(verbose_name='Количество выданных книг')
     def __str__(self):
-        return self.title
+        return self.Title
 
 
