@@ -6,16 +6,16 @@ from django.contrib.auth import get_user_model
 
 # Create your models here.
 class EventType(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, verbose_name='Тип мероприятия')
 
 class Department(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, verbose_name='Отдел')
 
 class EventForm(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, verbose_name='Форма мероприятия')
 
 class Theme(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, verbose_name='Тема мероприятия')
 
 class Event(models.Model):
     EventType = models.ForeignKey('EventType', on_delete=models.CASCADE, verbose_name='Тип мероприятия',help_text='Массовое мероприятие')
