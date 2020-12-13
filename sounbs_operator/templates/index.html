@@ -4,7 +4,7 @@
 {% if user.is_authenticated %}
      <h1>User: {{ user.get_username }}</h1>  
    {% else %}
-     <h1><a href="{% url 'login'%}">Login</a></h1>   
+     <h1><a href="{% url 'login'%}?next={{request.path}}">Login</a></h1>   
    {% endif %} 
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/brutusin-json-forms.min.css' %}" crossorigin="anonymous">
