@@ -4,15 +4,23 @@ from django.contrib.auth import get_user_model
 # Create your models here.
 class EventType(models.Model):
     title = models.CharField(max_length=255, verbose_name='Тип мероприятия')
+    def __str__(self):
+        return self.title
 
 class Department(models.Model):
     title = models.CharField(max_length=255, verbose_name='Отдел')
+    def __str__(self):
+        return self.title
 
 class EventForm(models.Model):
     title = models.CharField(max_length=255, verbose_name='Форма мероприятия')
+    def __str__(self):
+        return self.title
 
 class Theme(models.Model):
     title = models.CharField(max_length=255, verbose_name='Тема мероприятия')
+    def __str__(self):
+        return self.title
 
 class Event(models.Model):
     EventType = models.ForeignKey('EventType', on_delete=models.CASCADE, verbose_name='Тип мероприятия',help_text='Массовое мероприятие')
@@ -34,5 +42,7 @@ class Event(models.Model):
     JuniorVisitorCount = models.IntegerField(verbose_name='..от 14 до 18 лет')
     BooksOnDisplayCount = models.IntegerField(verbose_name='Количество выставвленых книг')
     IssuedBooksCount = models.IntegerField(verbose_name='Количество выданных книг')
+    def __str__(self):
+        return self.title
 
 
