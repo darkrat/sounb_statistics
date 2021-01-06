@@ -11,6 +11,8 @@ class EventSerializer(serializers.ModelSerializer):
         fields = ('id', 'ExpositionTitle', 'HasPoster', 'HasPhotos', 'StartDate', 'EndDate', 'Title', 'Description', 'Author', 'Location', 'VisitorCount', 'ChildVisitorCount', 'JuniorVisitorCount', 'BooksOnDisplayCount', 'IssuedBooksCount', 'Department_id', 'EventForm_id', 'EventType_id', 'Owner_id')
 
 class EventTitleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Event
     def __init__(self, *args, **kwargs):
         super(EventTitleSerializer, self).__init__(*args, **kwargs)
 
