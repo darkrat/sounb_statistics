@@ -30,5 +30,5 @@ class EventTitleSerializer(serializers.ModelSerializer):
 
         for field in self.Meta.model._meta.get_fields():
             if field.name in self.fields:
-                labels[field.name] = field.verbose_name
+                labels['title'] = field.verbose_name
         return labels
