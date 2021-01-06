@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from .serializers import ListSerializer, EventSerializer
 
-from .models import Department,Event,EventForm,EventType,Theme
+from .models import Department,Event,EventForm,EventType,Theme,EventTitleSerializer
 # Create your views here.
 
 # Department
@@ -26,3 +26,8 @@ class ThemeView(viewsets.ModelViewSet):
 class EventView(viewsets.ModelViewSet):
     serializer_class = EventSerializer
     queryset = Event.objects.all()
+
+class EventTitle(viewsets.ModelViewSet):
+    serializer_class = EventTitleSerializer
+    queryset = Event.objects.all()
+    
