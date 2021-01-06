@@ -13,6 +13,7 @@ class EventSerializer(serializers.ModelSerializer):
 class EventTitleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
+        fields = '__all__'
     def __init__(self, *args, **kwargs):
         super(EventTitleSerializer, self).__init__(*args, **kwargs)
 
