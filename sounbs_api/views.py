@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
+from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import ListSerializer, EventSerializer, EventTitleSerializer
 
@@ -27,7 +28,8 @@ class EventView(viewsets.ModelViewSet):
     serializer_class = EventSerializer
     queryset = Event.objects.all()
 
-class EventTitle(ListAPIView):
-    serializer_class = EventTitleSerializer
-    queryset = Event.objects.all()
-    
+class EventTitleView(APIView):
+    def get(self, request):
+        queryset = Event.objects.all()
+        serializer = EventTitleSerializer(queryset, many=True)
+        return Response({"titles": serializer.get_labels})
