@@ -1,20 +1,15 @@
 {% extends "base.html" %}
 
 {% block page_content %}
-
+{% if user.is_authenticated %}
+     <h1>User: {{ user.get_username }}</h1>  
+   {% else %}
+     <h1><a href="{% url 'login'%}?next={{request.path}}">Login</a></h1>   
+   {% endif %} 
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/brutusin-json-forms.min.css' %}" crossorigin="anonymous">
 
-<div id="container" style="padding-left:12px;padding-right:12px;padding-bottom: 12px;"></div>
-<script src="{% static 'js/brutusin-json-forms.js'%}" crossorigin="anonymous"></script>
-<script src="{% static 'js/brutusin-json-forms-bootstrap.min.js'%}" crossorigin="anonymous"></script>
-<script lang="javascript">
-            var schema = {% include 'addevent.json' %}
-            var data = null;
-            var BrutusinForms = brutusin["json-forms"];
-            var bf = BrutusinForms.create(schema);
-            var container = document.getElementById('container');
-            bf.render(container, data);
-        </script>
+
 
 {% endblock %}
+{% extends "event_add_form.html" %}
