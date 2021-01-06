@@ -27,7 +27,7 @@ class EventView(viewsets.ModelViewSet):
     serializer_class = EventSerializer
     queryset = Event.objects.all()
 
-class EventTitle(viewsets.ModelViewSet):
+class EventTitle(ListAPIView):
     serializer_class = EventTitleSerializer
     queryset = Event.objects.all()
     
