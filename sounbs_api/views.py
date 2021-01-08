@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import ListSerializer, EventSerializer, EventTitleSerializer
+from .serializers import ListSerializer, EventSerializer #, EventTitleSerializer
 
 from .models import Department,Event,EventForm,EventType,Theme
 # Create your views here.
