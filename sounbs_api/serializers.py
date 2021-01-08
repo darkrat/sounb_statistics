@@ -10,26 +10,26 @@ class EventSerializer(serializers.ModelSerializer):
         model = Event
         fields = ('id', 'ExpositionTitle', 'HasPoster', 'HasPhotos', 'StartDate', 'EndDate', 'Title', 'Description', 'Author', 'Location', 'VisitorCount', 'ChildVisitorCount', 'JuniorVisitorCount', 'BooksOnDisplayCount', 'IssuedBooksCount', 'Department_id', 'EventForm_id', 'EventType_id', 'Owner_id')
 
-class EventTitleSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Event
-        fields = '__all__'
-        
-    def __init__(self, *args, **kwargs):
-        super(EventTitleSerializer, self).__init__(*args, **kwargs)
+# class EventTitleSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Event
+#         fields = '__all__'
 
-        if 'labels' in self.fields:
-            raise RuntimeError(
-                'You cant have labels field defined '
-                'while using EventTitleSerializer'
-            )
+#     def __init__(self, *args, **kwargs):
+#         super(EventTitleSerializer, self).__init__(*args, **kwargs)
 
-        self.fields['labels'] = SerializerMethodField()
+#         if 'labels' in self.fields:
+#             raise RuntimeError(
+#                 'You cant have labels field defined '
+#                 'while using EventTitleSerializer'
+#             )
 
-    def get_labels(self, *args):
-        labels = {}
+#         self.fields['labels'] = SerializerMethodField()
 
-        for field in self.Meta.model._meta.get_fields():
-            if field.name in self.fields:
-                labels['title'] = field.verbose_name
-        return labels
+#     def get_labels(self, *args):
+#         labels = {}
+
+#         for field in self.Meta.model._meta.get_fields():
+#             if field.name in self.fields:
+#                 labels['title'] = field.verbose_name
+#         return labels
