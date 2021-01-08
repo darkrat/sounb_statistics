@@ -1,43 +1,24 @@
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 <script>
-$(document).ready(function () {
-    var columns = []; // array
-    var response = null;
-            
-            $('#btn-show-collar').click(function () {                              
-                $('#collar').DataTable({
-                    "processing": true,
-                    "serverSide": true,  
-                    "ajax": function (data, callback, settings) {
-                        $.ajax({
-                            url: '/HO/DrillHole/CollarGetAll',
-                            type: 'POST',
-                            data: data,
-                            success: function (data) {                               
- 
-                                response = data.data;
- 
-                                $.each(response[0], function (key, value) {
-                                    var my_item = {};                                  
-                                    my_item.title = key;
-                                    my_item.data = key;
-                                    columns.push(my_item);
- 
-                                });
- 
-                                //console.log(response);
-                                callback(data);                               
-                            }
-                        })
-                    },                                    
-                    "data": response,                    
-                    "columns": columns
- 
-                });                        
-                
- 
-            });
-}
+var data = [
+    [ "Row 1 - Field 1", "Row 1 - Field 2", "Row 1 - Field 3" ],
+    [ "Row 2 - Field 1", "Row 2 - Field 2", "Row 2 - Field 3" ],
+];
+var columns = [
+    { "title":"One" },
+    { "title":"Two" },
+    { "title":"Three" }
+];  
+$(document).ready(function() {
+  $('#example').DataTable( {
+    dom: "Bfrtip",
+    data: data,
+    columns: columns
+  });
+});
 </script>
+<table id="example" class="display table table-striped table-bordered"
+       cellspacing="0" width="100%"></table>
 <table class="table table-hover" id="collar">
                                        
  </table>
