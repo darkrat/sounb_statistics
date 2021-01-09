@@ -20,31 +20,31 @@ $(document).ready(function() {
   promises.push(new Promise(done=>{
     $.get("api/operator/departments", function(data) {
             departments = data.data
-    });
+    }).done(done);
   }));
 
   promises.push(new Promise(done=>{
     $.get("api/operator/departments", function(data) {
             departments = data.data
-    });
+    }).done(done);
   }));
 
   promises.push(new Promise(done=>{
     $.get("api/operator/eventtypes", function(data) {
       eventtypes = data.data
-    });
+    }).done(done);
   }));
 
   promises.push(new Promise(done=>{
     $.get("api/operator/eventforms", function(data) {
       eventforms = data.data
-    });
+    }).done(done);
   }));
 
   promises.push(new Promise(done=>{
     $.get("api/operator/themes", function(data) {
       themes = data.data
-    });
+    }).done(done);
   }));
 
   var language = {
