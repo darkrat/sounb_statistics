@@ -38,8 +38,8 @@ var columns = [
 
 ];  
 $(document).ready(function() {
-  $.get("api/departments", function(data) {
-  alert(" {{ csrf_token }} Data Loaded: " + data);
+  $.get("api/operatordepartments", function(data) {
+  alert(" {{ csrf_token }} Data Loaded: " + data.data);
   });
 
 
