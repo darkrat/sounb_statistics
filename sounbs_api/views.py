@@ -40,7 +40,6 @@ class DepartmentOperatorView(viewsets.ModelViewSet):
         serializer = DepartmentSerializer(queryset, many=True)
         for dep in serializer.data:
             result.update({dep["id"]: dep["title"]})
-            #result += '"%s":"%s",'' % (dep["id"], dep["title"]) 
         return Response({"data": result})
 
 class ThemeOperatorView(viewsets.ModelViewSet):
@@ -49,12 +48,12 @@ class ThemeOperatorView(viewsets.ModelViewSet):
     permission_classes = [HasCsrfTokenValid,]
     
     def list(self, request):
-        result = ""
+        result = {}
         queryset = self.filter_queryset(self.get_queryset())
         serializer = ThemeSerializer(queryset, many=True)
         for dep in serializer.data:
-            result += "'%s':'%s'," % (dep["id"], dep["title"]) 
-        return Response({"data": "{%s}" % result})
+            result.update({dep["id"]: dep["title"]})
+        return Response({"data": result})
 
 class EventTypeOperatorView(viewsets.ModelViewSet):
     queryset = EventType.objects.all()
@@ -62,12 +61,12 @@ class EventTypeOperatorView(viewsets.ModelViewSet):
     permission_classes = [HasCsrfTokenValid,]
     
     def list(self, request):
-        result = ""
+        result = {}
         queryset = self.filter_queryset(self.get_queryset())
         serializer = EventTypeSerializer(queryset, many=True)
         for dep in serializer.data:
-            result += "'%s':'%s'," % (dep["id"], dep["title"]) 
-        return Response({"data": "{%s}" % result})
+            result.update({dep["id"]: dep["title"]})
+        return Response({"data": result})
 
 class EventFormOperatorView(viewsets.ModelViewSet):
     queryset = EventForm.objects.all()
@@ -75,12 +74,12 @@ class EventFormOperatorView(viewsets.ModelViewSet):
     permission_classes = [HasCsrfTokenValid,]
     
     def list(self, request):
-        result = ""
+        result = {}
         queryset = self.filter_queryset(self.get_queryset())
         serializer = EventFormSerializer(queryset, many=True)
         for dep in serializer.data:
-            result += "'%s':'%s'," % (dep["id"], dep["title"]) 
-        return Response({"data": "{%s}" % result})
+            result.update({dep["id"]: dep["title"]})
+        return Response({"data": result})
 
 
 class EventOperatorView(viewsets.ModelViewSet):
