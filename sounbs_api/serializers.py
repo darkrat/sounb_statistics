@@ -7,7 +7,6 @@ class ListSerializer(serializers.Serializer):
 
 class DictionarySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Department
         fields = ('id','title')
 
 class EventSerializer(serializers.ModelSerializer):
