@@ -113,6 +113,7 @@ $(document).ready(function() {
     { "data": "Department_id", 
       "title":"Отдел-организатор", 
       options : departments,
+      type : "select",
       select2 : { width: "100%"},
       render: function (data, type, row, meta) {
           if (data == null || !(data in departments)) return null;
@@ -130,6 +131,7 @@ $(document).ready(function() {
     },
     { "data": "EventForm_id", "title":"Форма мероприятия", 
       options : eventforms,
+      type : "select",
       select2 : { width: "100%"},
       render: function (data, type, row, meta) {
           if (data == null || !(data in eventforms)) return null;
@@ -138,6 +140,7 @@ $(document).ready(function() {
     },
     { "data": "EventType_id", "title":"Тип мероприятия", 
       options : eventtypes,
+      type : "select",
       select2 : { width: "100%"},
       render: function (data, type, row, meta) {
           if (data == null || !(data in eventtypes)) return null;
@@ -175,6 +178,7 @@ $(document).ready(function() {
     },
     { "data": "Theme", "title":"Тема мероприятия" , 
       options : themes,
+      type : "select",
       select2 : { width: "100%"},
       render: function (data, type, row, meta) {
           if (data == null || !(data in themes)) return null;
