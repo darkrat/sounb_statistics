@@ -35,12 +35,13 @@ class DepartmentOperatorView(viewsets.ModelViewSet):
     permission_classes = [HasCsrfTokenValid,]
     
     def list(self, request):
-        result = ""
+        result = {}
         queryset = self.filter_queryset(self.get_queryset())
         serializer = DepartmentSerializer(queryset, many=True)
         for dep in serializer.data:
-            result += '"%s":"%s",' % (dep["id"], dep["title"]) 
-        return Response({"{%s}" % result})
+            #result += '"%s":"%s",' % (dep["id"], dep["title"]) 
+            result[dep["id"]] =  dep["title"]
+        return Response({result})
 
 class ThemeOperatorView(viewsets.ModelViewSet):
     queryset = Theme.objects.all()
