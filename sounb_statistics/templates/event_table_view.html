@@ -16,23 +16,74 @@
   
 $(document).ready(function() {
   var departments, eventtypes, eventforms, themes
+  var promises = [];
+  promises.push(new Promise(done=>{
+    $.get("api/operator/departments", function(data) {
+            departments = data.data
+    });
+  }));
 
-  $.get("api/operator/departments", function(data) {
-          departments = data.data
-  }).wait();
+  promises.push(new Promise(done=>{
+    $.get("api/operator/departments", function(data) {
+            departments = data.data
+    });
+  }));
 
-  $.get("api/operator/eventtypes", function(data) {
-    eventtypes = data.data
-  }).wait();
+  promises.push(new Promise(done=>{
+    $.get("api/operator/eventtypes", function(data) {
+      eventtypes = data.data
+    });
+  }));
 
-  $.get("api/operator/eventforms", function(data) {
-    eventforms = data.data
-  }).wait();
+  promises.push(new Promise(done=>{
+    $.get("api/operator/eventforms", function(data) {
+      eventforms = data.data
+    });
+  }));
 
-  $.get("api/operator/themes", function(data) {
-    themes = data.data
-  }).wait();
+  promises.push(new Promise(done=>{
+    $.get("api/operator/themes", function(data) {
+      themes = data.data
+    });
+  }));
 
+  var language = {
+    "search": "Поиск:",
+    "lengthMenu": "Отображать _MENU_ мероприятий на стринице",
+    "zeroRecords": "Мероприятий по заданным параметрам не найдено",
+    "info": "Отображается страница № _PAGE_ из _PAGES_",
+    "infoEmpty": "Нет доступный записей",
+    "infoFiltered": "(filtered from _MAX_ total records)",
+    "paginate": {
+        "first":      "Первая",
+        "last":       "Последняя",
+        "next":       "Следующая",
+        "previous":   "Предидущая"
+    },
+    "altEditor" : {
+      "modalClose" : "Закрыть",
+      "edit" : {
+          "title" : "Редактировать",
+          "button" : "Редактировать"
+      },
+      "add" : {
+          "title" : "Добавить",
+          "button" : "Добавить"
+      },
+      "delete" : {
+          "title" : "Удалить",
+          "button" : "Удалить"
+      },
+      "success" : "Данные сохранены",
+      "error" : {
+          "message" : "Данные не коректны. Исправте ошибки и попробуйте снова",
+          "label" : "Ошибка",
+          "responseCode" : "Ответ от сервера:",
+          "required" : "Обязательное поле",
+          "unique" : "Дабликат"
+      }
+    }
+  };
   var columns = [
     { "data": "Author", "title":"Регистратор мероприятия" 
     },
@@ -84,109 +135,74 @@ $(document).ready(function() {
 
   ];
 
-  $('#example').DataTable( {
-    "ajax": {
-      "url" : "api/operator/events",
-      "type": "get",
-      'beforeSend': function (request) {
-        request.setRequestHeader("api-csrftoken", '{{ csrf_token }}');
-      }
-    },
-    scrollY: 800,
-    columns: columns,
-    responsive: true,
-    dom: 'Bfrtip',        // Needs button container
-    select: 'single',
-    altEditor: true,     // Enable altEditor
-    "language": {
-            "search": "Поиск:",
-            "lengthMenu": "Отображать _MENU_ мероприятий на стринице",
-            "zeroRecords": "Мероприятий по заданным параметрам не найдено",
-            "info": "Отображается страница № _PAGE_ из _PAGES_",
-            "infoEmpty": "Нет доступный записей",
-            "infoFiltered": "(filtered from _MAX_ total records)",
-            "paginate": {
-                "first":      "Первая",
-                "last":       "Последняя",
-                "next":       "Следующая",
-                "previous":   "Предидущая"
-            },
-            "altEditor" : {
-              "modalClose" : "Закрыть",
-              "edit" : {
-                  "title" : "Редактировать",
-                  "button" : "Редактировать"
-              },
-              "add" : {
-                  "title" : "Добавить",
-                  "button" : "Добавить"
-              },
-              "delete" : {
-                  "title" : "Удалить",
-                  "button" : "Удалить"
-              },
-              "success" : "Данные сохранены",
-              "error" : {
-                  "message" : "Данные не коректны. Исправте ошибки и попробуйте снова",
-                  "label" : "Ошибка",
-                  "responseCode" : "Ответ от сервера:",
-                  "required" : "Обязательное поле",
-                  "unique" : "Дабликат"
-              }
-            }
-    },
-    buttons: [
-            {
-                text: 'Добавить',
-                name: 'add'        // do not change name
-            },
-            {
-                extend: 'selected', // Bind to Selected row
-                text: 'Редактировать',
-                name: 'edit'        // do not change name
-            },
-            {
-                extend: 'selected', // Bind to Selected row
-                text: 'Удалить',
-                name: 'delete'      // do not change name
-            },
-            {
-                text: 'Обновить',
-                name: 'refresh'      // do not change name
-            }
-        ],
-    onAddRow: function(datatable, rowdata, success, error) {
-            $.ajax({
-                // a tipycal url would be / with type='PUT'
-                url: url_ws_mock_ok,
-                type: 'GET',
-                data: rowdata,
-                success: success,
-                error: error
-            });
-        },
-    onDeleteRow: function(datatable, rowdata, success, error) {
-        $.ajax({
-            // a tipycal url would be /{id} with type='DELETE'
-            url: url_ws_mock_ok,
-            type: 'GET',
-            data: rowdata,
-            success: success,
-            error: error
-        });
+  Promise.all(promises).then(()=>{
+    $('#example').DataTable( {
+      "ajax": {
+        "url" : "api/operator/events",
+        "type": "get",
+        'beforeSend': function (request) {
+          request.setRequestHeader("api-csrftoken", '{{ csrf_token }}');
+        }
       },
-    onEditRow: function(datatable, rowdata, success, error) {
-        $.ajax({
-            // a tipycal url would be /{id} with type='POST'
-            url: url_ws_mock_ok,
-            type: 'GET',
-            data: rowdata,
-            success: success,
-            error: error
-        });
-      }
+      scrollY: 800,
+      columns: columns,
+      responsive: true,
+      dom: 'Bfrtip',        // Needs button container
+      select: 'single',
+      altEditor: true,     // Enable altEditor
+      "language": language,
+      buttons: [
+              {
+                  text: 'Добавить',
+                  name: 'add'        // do not change name
+              },
+              {
+                  extend: 'selected', // Bind to Selected row
+                  text: 'Редактировать',
+                  name: 'edit'        // do not change name
+              },
+              {
+                  extend: 'selected', // Bind to Selected row
+                  text: 'Удалить',
+                  name: 'delete'      // do not change name
+              },
+              {
+                  text: 'Обновить',
+                  name: 'refresh'      // do not change name
+              }
+          ],
+      onAddRow: function(datatable, rowdata, success, error) {
+              $.ajax({
+                  // a tipycal url would be / with type='PUT'
+                  url: url_ws_mock_ok,
+                  type: 'GET',
+                  data: rowdata,
+                  success: success,
+                  error: error
+              });
+          },
+      onDeleteRow: function(datatable, rowdata, success, error) {
+          $.ajax({
+              // a tipycal url would be /{id} with type='DELETE'
+              url: url_ws_mock_ok,
+              type: 'GET',
+              data: rowdata,
+              success: success,
+              error: error
+          });
+        },
+      onEditRow: function(datatable, rowdata, success, error) {
+          $.ajax({
+              // a tipycal url would be /{id} with type='POST'
+              url: url_ws_mock_ok,
+              type: 'GET',
+              data: rowdata,
+              success: success,
+              error: error
+          });
+        }
+    });
   });
-});
 </script>
 <table id="example" class="table table-striped table-bordered dt-responsive nowrap"
        cellspacing="0" >
