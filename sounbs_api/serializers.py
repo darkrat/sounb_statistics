@@ -8,7 +8,6 @@ class ListSerializer(serializers.Serializer):
 class DictionarySerializer(serializers.Serializer):
     class Meta:
         fields = '__all__'
-        model = Department
 
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
