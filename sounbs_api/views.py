@@ -38,7 +38,7 @@ class DepartmentOperatorView(viewsets.ModelViewSet):
         result = ""
         queryset = self.filter_queryset(self.get_queryset())
         #page = self.paginate_queryset(queryset)
-        serializer = DictionarySerializer(queryset, many=True, fields=('id','title'))
+        serializer = DictionarySerializer(queryset, many=True)
         for dep in serializer.data:
             result += "'%s':'%s'," % (dep.fromkeys("id"), dep.fromkeys("title")) 
         return Response({"data": "{%s}" % result})
