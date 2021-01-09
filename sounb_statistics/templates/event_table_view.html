@@ -8,25 +8,26 @@ var data = [
     [ "Row 2 - Field 1", "Row 2 - Field 2", "Row 2 - Field 3" ],
 ];
 var columns = [
-    { "title":"Тип мероприятия" },
-    { "title":"Отдел-организатор" },
-    { "title":"Форма мероприятия" },
-    { "title":"Оператор" },
-    { "title":"Тема мероприятия" },
-    { "title":"Название сопровождающей выставки" },
-    { "title":"Была ли подготовлена афиша?" },
-    { "title":"Место хранения медиа-отчета" },
-    { "title":"Начало мероприятия" },
-    { "title":"Окончание мероприятия" },
-    { "title":"Название мероприятия" },
-    { "title":"Описание содержания мероприятия" },
-    { "title":"Регистратор мероприятия" },
-    { "title":"Место провидения" },
-    { "title":"Количество участников" },
-    { "title":".. из них детей 14 лет" },
-    { "title":"..от 14 до 18 лет" },
-    { "title":"Количество выставвленых книг" },
-    { "title":"Количество выданных книг" }
+    { "data": "Author" },
+    { "data": "BooksOnDisplayCount" },
+    { "data": "ChildVisitorCount" },
+    { "data": "Department_id" },
+    { "data": "Description" },
+    { "data": "EndDate" },
+    { "data": "EventForm_id" },
+    { "data": "EventType_id" },
+    { "data": "ExpositionTitle" },
+    { "data": "HasPhotos" },
+    { "data": "HasPoster" },
+    { "data": "IssuedBooksCount" },
+    { "data": "JuniorVisitorCount" },
+    { "data": "Location" },
+    { "data": "Owner_id" },
+    { "data": "StartDate" },
+    { "data": "Title" },
+    { "data": "VisitorCount" },
+    { "data": "id" }
+
 ];  
 $(document).ready(function() {
   $('#example').DataTable( {
@@ -43,7 +44,54 @@ $(document).ready(function() {
 });
 </script>
 <table id="example" class="display table table-striped table-bordered"
-       cellspacing="0" width="100%"></table>
+       cellspacing="0" width="100%">
+       <thead>
+            <tr>
+                <th>Тип мероприятия</th>
+                <th>Отдел-организатор</th>
+                <th>Форма мероприятия</th>
+                <th>Оператор</th>
+                <th>Тема мероприятия</th>
+                <th>Название сопровождающей выставки</th>
+                <th>Была ли подготовлена афиша?</th>
+                <th>Место хранения медиа-отчета</th>
+                <th>Начало мероприятия</th>
+                <th>Окончание мероприятия</th>
+                <th>Название мероприятия</th>
+                <th>Описание содержания мероприятия</th>
+                <th>Регистратор мероприятия</th>
+                <th>Место провидения</th>
+                <th>Количество участников</th>
+                <th>.. из них детей 14 лет</th>
+                <th>..от 14 до 18 лет</th>
+                <th>Количество выставвленых книг</th>
+                <th>Количество выданных книг</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Тип мероприятия</th>
+                <th>Отдел-организатор</th>
+                <th>Форма мероприятия</th>
+                <th>Оператор</th>
+                <th>Тема мероприятия</th>
+                <th>Название сопровождающей выставки</th>
+                <th>Была ли подготовлена афиша?</th>
+                <th>Место хранения медиа-отчета</th>
+                <th>Начало мероприятия</th>
+                <th>Окончание мероприятия</th>
+                <th>Название мероприятия</th>
+                <th>Описание содержания мероприятия</th>
+                <th>Регистратор мероприятия</th>
+                <th>Место провидения</th>
+                <th>Количество участников</th>
+                <th>.. из них детей 14 лет</th>
+                <th>..от 14 до 18 лет</th>
+                <th>Количество выставвленых книг</th>
+                <th>Количество выданных книг</th>
+            </tr>
+        </tfoot>
+       </table>
 <table class="table table-hover" id="collar">
                                        
  </table>
