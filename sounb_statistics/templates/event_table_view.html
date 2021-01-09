@@ -38,14 +38,14 @@ var columns = [
 
 ];  
 $(document).ready(function() {
-  $.get("api/operatordepartments", function(data) {
+  $.get("api/operator/departments", function(data) {
   alert(" {{ csrf_token }} Data Loaded: " + data.data);
   });
 
 
   $('#example').DataTable( {
     "ajax": {
-      "url" : "api/operatorevents",
+      "url" : "api/operator/events",
       "type": "get",
       'beforeSend': function (request) {
         request.setRequestHeader("api-csrftoken", '{{ csrf_token }}');

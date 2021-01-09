@@ -1,12 +1,28 @@
 from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
-from .models import Event, Department
+from .models import Event, Department, EventType, EventForm, Theme
 
 class ListSerializer(serializers.Serializer):
     title = serializers.CharField(max_length=255)
 
-class DictionarySerializer(serializers.ModelSerializer):
+class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
+        model = Department
+        fields = ('id','title')
+
+class EventTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EventType
+        fields = ('id','title')
+
+class EventFormSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EventForm
+        fields = ('id','title')
+
+class ThemeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Theme
         fields = ('id','title')
 
 class EventSerializer(serializers.ModelSerializer):
