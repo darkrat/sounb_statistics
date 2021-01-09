@@ -216,9 +216,9 @@ $(document).ready(function() {
                   text: 'Обновить',
                   name: 'refresh'      // do not change name
               },
-              {name: 'excel', text: 'Excel'},
-              {name: 'csv', text: 'CSV'},
-              {name: 'pdf', text: 'PDF'}
+              {extend: 'excel', text: 'Excel'},
+              {extend: 'csv', text: 'CSV'},
+              {extend: 'pdf', text: 'PDF'}
           ];
   Promise.all(promises).then(()=>{
     var table = $('#example').DataTable( {
