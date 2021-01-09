@@ -216,9 +216,9 @@ $(document).ready(function() {
                   text: 'Обновить',
                   name: 'refresh'      // do not change name
               },
-              {name: 'excelHtml5', text: 'Excel'},
-              {name: 'csvHtml5', text: 'CSV'},
-              {name: 'pdfHtml5', text: 'PDF'}
+              {name: 'excel', text: 'Excel'},
+              {name: 'csv', text: 'CSV'},
+              {name: 'pdf', text: 'PDF'}
           ];
   Promise.all(promises).then(()=>{
     var table = $('#example').DataTable( {
