@@ -36,13 +36,14 @@ class DepartmentOperatorView(viewsets.ModelViewSet):
     
     def list(self, request):
         result = ""
-        queryset = self.filter_queryset(self.get_queryset())
-        page = self.paginate_queryset(queryset)
+        #queryset = self.filter_queryset(self.get_queryset())
+        #page = self.paginate_queryset(queryset)
         serializer = DictionarySerializer(queryset, many=True)
-        for dep in serializer.data:
-            print(dep)
-            result += "'%s':'%s'," % (Department(dep).id, Department(dep).title) 
-        return Response({"data": "{%s}" % result})
+        # for dep in serializer.data:
+        #     print(dep)
+        #     result += "'%s':'%s'," % (Department(dep).id, Department(dep).title) 
+        # return Response({"data": "{%s}" % result})
+        return Response({"data": serializer.data})
 
 class EventOperatorView(viewsets.ModelViewSet):
     queryset = Event.objects.all()
