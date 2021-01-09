@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from .serializers import ListSerializer, EventSerializer #, EventTitleSerializer
 from .permission import HasCsrfTokenValid
 from .models import Department,Event,EventForm,EventType,Theme
+from django.middleware.csrf import _compare_salted_tokens, rotate_token
 # Create your views here.
 
 # Department
