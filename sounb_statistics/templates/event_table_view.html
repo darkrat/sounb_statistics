@@ -31,8 +31,13 @@ var columns = [
 $(document).ready(function() {
   $('#example').DataTable( {
     dom: "Bfrtip",
-    headers:{'api-csrftoken':'{{ csrf_token }}'},
-    "ajax": "api/operatorevents",
+    "ajax": {
+      "url" : "api/operatorevents",
+      "type": "get",
+      'beforeSend': function (request) {
+        request.setRequestHeader("api-csrftoken", '{{ csrf_token }}');
+      }
+    },
     columns: columns
   });
 });

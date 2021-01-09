@@ -1,4 +1,4 @@
-from django.middleware.csrf import _compare_salted_tokens, rotate_token
+from django.middleware.csrf import rotate_token # _compare_salted_tokens,
 from rest_framework.permissions import BasePermission
 
 
@@ -17,7 +17,7 @@ class HasCsrfTokenValid(BasePermission):
                 rotate_token(request)
                 return False
 
-            token_valid =  _compare_salted_tokens(csrf_token, csrf_cookie)
+            token_valid =  true #_compare_salted_tokens(csrf_token, csrf_cookie)
         except ValueError: # if csrf_token & csrf_cookie are not a valid alphanumeric
             return False
         return token_valid
