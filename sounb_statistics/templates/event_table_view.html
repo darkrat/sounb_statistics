@@ -19,7 +19,7 @@ $(document).ready(function() {
   var promises = [];
   promises.push(new Promise(done=>{
     $.get("api/operator/departments", function(data) {
-            departments = data
+            departments = data.data
     }).done(done);
   }));
 
