@@ -27,6 +27,7 @@ var columns = [
       render: function (data, type, row, meta) {
           if (data == null || !(data in departments)) return null;
           return departments[data];
+      }
     },
     { "data": "Description", "title":"Описание содержания мероприятия" 
     },
