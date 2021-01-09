@@ -96,7 +96,7 @@ $(document).ready(function() {
       options : departments,
       select2 : { width: "100%"},
       render: function (data, type, row, meta) {
-          if (data == null || !(data in departments)) return null;
+          {% comment %} if (data == null || !(data in departments)) return null; {% endcomment %}
           return departments[data];
       }
     },
