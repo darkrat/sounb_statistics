@@ -38,10 +38,23 @@ var columns = [
 
 ];  
 $(document).ready(function() {
+  var departments, eventtypes, eventforms, themes
+
   $.get("api/operator/departments", function(data) {
-  alert(" {{ csrf_token }} Data Loaded: " + data.data);
+    departments = data.data
   });
 
+  $.get("api/operator/eventtypes", function(data) {
+    eventtypes = data.data
+  });
+
+  $.get("api/operator/eventforms", function(data) {
+    eventforms = data.data
+  });
+
+  $.get("api/operator/themes", function(data) {
+    themes = data.data
+  });
 
   $('#example').DataTable( {
     "ajax": {
