@@ -41,7 +41,7 @@ class DepartmentOperatorView(viewsets.ModelViewSet):
         for dep in serializer.data:
             #result += '"%s":"%s",' % (dep["id"], dep["title"]) 
             result[dep["id"]] =  dep["title"]
-        return Response({result})
+        return Response({result.items()})
 
 class ThemeOperatorView(viewsets.ModelViewSet):
     queryset = Theme.objects.all()
