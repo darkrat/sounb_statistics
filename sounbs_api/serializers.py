@@ -5,6 +5,10 @@ from .models import Event
 class ListSerializer(serializers.Serializer):
     title = serializers.CharField(max_length=255)
 
+class DictionarySerializer(serializers.Serializer):
+    class Meta:
+        fields = ('id', 'Title')
+
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event

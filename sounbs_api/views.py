@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import ListSerializer, EventSerializer #, EventTitleSerializer
+from .serializers import ListSerializer, EventSerializer, DictionarySerializer #, EventTitleSerializer
 from .permission import HasCsrfTokenValid
 from .models import Department,Event,EventForm,EventType,Theme
 # Create your views here.
@@ -29,6 +29,20 @@ class EventView(viewsets.ModelViewSet):
     queryset = Event.objects.all()
 
 # Operator Views
+class DepartmentOperatorView(viewsets.ModelViewSet):
+    queryset = Department.objects.all()
+    serializer_class = DictionarySerializer
+    permission_classes = [HasCsrfTokenValid,]
+    
+    def list(self, request):
+        result = ""
+        queryset = self.filter_queryset(self.get_queryset())
+        page = self.paginate_queryset(queryset)
+        serializer = DictionarySerializer(queryset, many=True)
+        for dep in serializer.data:
+            result += "'%s':'%s'," % (dep.Id, dep.Title) 
+        return Response({"data": "{%s}" % result})
+
 class EventOperatorView(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
