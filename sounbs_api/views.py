@@ -28,8 +28,9 @@ class EventView(viewsets.ModelViewSet):
     serializer_class = EventSerializer
     queryset = Event.objects.all()
 
-# class EventTitleView(APIView):
-#     def get(self, request):
-#         queryset = Event.objects.all()
-#         serializer = EventTitleSerializer(queryset, many=True)
-#         return Response({"titles": serializer.get_labels})
+# Operator Views
+class EventOperatorView(viewsets.ModelViewSet):
+    def get(self, request):
+    queryset = Event.objects.all()
+    serializer = EventSerializer(queryset, many=True)
+    return Response({"data": serializer.data})

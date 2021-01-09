@@ -8,5 +8,5 @@ router.register(r'themes', ThemeView)
 router.register(r'eventtypes', EventTypeView)
 router.register(r'eventforms', EventFormView)
 router.register(r'events', EventView)
-# router.register(r'metaevent', EventTitleView)
+router.register(r'operator/events', EventOperatorView)
 urlpatterns = router.urls
