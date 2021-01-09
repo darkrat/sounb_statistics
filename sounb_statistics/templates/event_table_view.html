@@ -5,6 +5,10 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.js" ></script>
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.js" ></script>
+<script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.js" ></script>
+<script src="{% static 'js/dataTables.altEditor.free.js'%}" crossorigin="anonymous"></script>
 <script>
 var columns = [
     { "data": "Author", "title":"Регистратор мероприятия" },
@@ -41,6 +45,9 @@ $(document).ready(function() {
     },
     columns: columns,
     responsive: true,
+    dom: 'Bfrtip',        // Needs button container
+    select: 'single',
+    altEditor: true,     // Enable altEditor
     "language": {
             "search": "Поиск:",
             "lengthMenu": "Отображать _MENU_ мероприятий на стринице",
@@ -54,7 +61,57 @@ $(document).ready(function() {
                 "next":       "Следующая",
                 "previous":   "Предидущая"
             },
-        }
+    },
+    buttons: [
+            {
+                text: 'Добавить',
+                name: 'add'        // do not change name
+            },
+            {
+                extend: 'selected', // Bind to Selected row
+                text: 'Редактировать',
+                name: 'edit'        // do not change name
+            },
+            {
+                extend: 'selected', // Bind to Selected row
+                text: 'Удалить',
+                name: 'delete'      // do not change name
+            },
+            {
+                text: 'Обновить',
+                name: 'refresh'      // do not change name
+            }
+        ],
+    onAddRow: function(datatable, rowdata, success, error) {
+            $.ajax({
+                // a tipycal url would be / with type='PUT'
+                url: url_ws_mock_ok,
+                type: 'GET',
+                data: rowdata,
+                success: success,
+                error: error
+            });
+        },
+    onDeleteRow: function(datatable, rowdata, success, error) {
+        $.ajax({
+            // a tipycal url would be /{id} with type='DELETE'
+            url: url_ws_mock_ok,
+            type: 'GET',
+            data: rowdata,
+            success: success,
+            error: error
+        });
+      },
+    onEditRow: function(datatable, rowdata, success, error) {
+        $.ajax({
+            // a tipycal url would be /{id} with type='POST'
+            url: url_ws_mock_ok,
+            type: 'GET',
+            data: rowdata,
+            success: success,
+            error: error
+        });
+      }
   });
 });
 </script>
