@@ -14,27 +14,52 @@
 <script src="{% static 'js/dataTables.altEditor.free.js'%}" crossorigin="anonymous"></script>
 <script>
 var columns = [
-    { "data": "Author", "title":"Регистратор мероприятия" },
-    { "data": "BooksOnDisplayCount", "title":"Количество выставвленых книг" },
-    { "data": "ChildVisitorCount", "title":".. из них детей 14 лет" },
-    { "data": "Department_id", "title":"Отдел-организатор" },
-    { "data": "Description", "title":"Описание содержания мероприятия" },
-    { "data": "EndDate", "title":"Окончание мероприятия" },
-    { "data": "EventForm_id", "title":"Форма мероприятия" },
-    { "data": "EventType_id", "title":"Тип мероприятия" },
-    { "data": "ExpositionTitle", "title":"Название сопровождающей выставки" },
-    { "data": "HasPhotos", "title":"Место хранения медиа-отчета" },
-    { "data": "HasPoster", "title":"Была ли подготовлена афиша?" },
-    { "data": "IssuedBooksCount", "title":"Количество выданных книг" },
-    { "data": "JuniorVisitorCount", "title":"..от 14 до 18 лет" },
-    { "data": "Location", "title":"Место провидения" },
-    { "data": "Owner_id", "title":"Оператор" },
-    { "data": "StartDate", "title":"Начало мероприятия" },
-    { "data": "Title", "title":"Название мероприятия" },
-    { "data": "VisitorCount", "title":"Количество участников" },
+    { "data": "Author", "title":"Регистратор мероприятия" 
+    },
+    { "data": "BooksOnDisplayCount", "title":"Количество выставвленых книг" 
+    },
+    { "data": "ChildVisitorCount", "title":".. из них детей 14 лет" 
+    },
+    { "data": "Department_id", 
+      "title":"Отдел-организатор", 
+      options : departments,
+      select2 : { width: "100%"},
+      render: function (data, type, row, meta) {
+          if (data == null || !(data in departments)) return null;
+          return departments[data];
+    },
+    { "data": "Description", "title":"Описание содержания мероприятия" 
+    },
+    { "data": "EndDate", "title":"Окончание мероприятия" 
+    },
+    { "data": "EventForm_id", "title":"Форма мероприятия" 
+    },
+    { "data": "EventType_id", "title":"Тип мероприятия" 
+    },
+    { "data": "ExpositionTitle", "title":"Название сопровождающей выставки" 
+    },
+    { "data": "HasPhotos", "title":"Место хранения медиа-отчета" 
+    },
+    { "data": "HasPoster", "title":"Была ли подготовлена афиша?" 
+    },
+    { "data": "IssuedBooksCount", "title":"Количество выданных книг" 
+    },
+    { "data": "JuniorVisitorCount", "title":"..от 14 до 18 лет" 
+    },
+    { "data": "Location", "title":"Место провидения" 
+    },
+    { "data": "Owner_id", "title":"Оператор" 
+    },
+    { "data": "StartDate", "title":"Начало мероприятия" 
+    },
+    { "data": "Title", "title":"Название мероприятия" 
+    },
+    { "data": "VisitorCount", "title":"Количество участников" 
+    },
     { "data": "id", "title":"Идентификатор" }
      {% comment %},
-     { "data": "Theme", "title":"Тема мероприятия" } {% endcomment %}
+     { "data": "Theme", "title":"Тема мероприятия" 
+     } {% endcomment %}
 
 ];  
 $(document).ready(function() {
