@@ -17,9 +17,7 @@
 $(document).ready(function() {
   var departments, eventtypes, eventforms, themes
 
-  $.get("api/operator/departments", function(data) {
-    departments = data.data
-  });
+  
 
   $.get("api/operator/eventtypes", function(data) {
     eventtypes = data.data
@@ -49,6 +47,11 @@ $(document).ready(function() {
       },
       select2 : { width: "100%"},
       render: function (data, type, row, meta) {
+          if (departments === undefined) {
+            $.get("api/operator/departments", function(data) {
+              departments = data.data
+            });
+          }
           if (data == null || !(data in departments)) return null;
           return departments[data];
       }
