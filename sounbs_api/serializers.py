@@ -5,14 +5,15 @@ from .models import Event, Department
 class ListSerializer(serializers.Serializer):
     title = serializers.CharField(max_length=255)
 
-class DictionarySerializer(serializers.Serializer):
-    id = serializers.Field()
-    title = serializers.CharField(max_length=255)
+class DictionarySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Department
+        fields = ('id','title')
 
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields = ('id', 'ExpositionTitle', 'HasPoster', 'HasPhotos', 'StartDate', 'EndDate', 'Title', 'Description', 'Author', 'Location', 'VisitorCount', 'ChildVisitorCount', 'JuniorVisitorCount', 'BooksOnDisplayCount', 'IssuedBooksCount', 'Department_id', 'EventForm_id', 'EventType_id', 'Owner_id')
+        fields = ('id', 'Theme', 'ExpositionTitle', 'HasPoster', 'HasPhotos', 'StartDate', 'EndDate', 'Title', 'Description', 'Author', 'Location', 'VisitorCount', 'ChildVisitorCount', 'JuniorVisitorCount', 'BooksOnDisplayCount', 'IssuedBooksCount', 'Department_id', 'EventForm_id', 'EventType_id', 'Owner_id')
 
 # class EventTitleSerializer(serializers.ModelSerializer):
 #     class Meta:
