@@ -8,25 +8,26 @@ var data = [
     [ "Row 2 - Field 1", "Row 2 - Field 2", "Row 2 - Field 3" ],
 ];
 var columns = [
-    { "data": "Author" },
-    { "data": "BooksOnDisplayCount" },
-    { "data": "ChildVisitorCount" },
-    { "data": "Department_id" },
-    { "data": "Description" },
-    { "data": "EndDate" },
-    { "data": "EventForm_id" },
-    { "data": "EventType_id" },
-    { "data": "ExpositionTitle" },
-    { "data": "HasPhotos" },
-    { "data": "HasPoster" },
-    { "data": "IssuedBooksCount" },
-    { "data": "JuniorVisitorCount" },
-    { "data": "Location" },
-    { "data": "Owner_id" },
-    { "data": "StartDate" },
-    { "data": "Title" },
-    { "data": "VisitorCount" },
-    { "data": "id" }
+    { "data": "Author", "title":"Регистратор мероприятия" },
+    { "data": "BooksOnDisplayCount", "title":"Количество выставвленых книг" },
+    { "data": "ChildVisitorCount", "title":".. из них детей 14 лет" },
+    { "data": "Department_id", "title":"Отдел-организатор" },
+    { "data": "Description", "title":"Описание содержания мероприятия" },
+    { "data": "EndDate", "title":"Окончание мероприятия" },
+    { "data": "EventForm_id", "title":"Форма мероприятия" },
+    { "data": "EventType_id", "title":"Тип мероприятия" },
+    { "data": "ExpositionTitle", "title":"Название сопровождающей выставки" },
+    { "data": "HasPhotos", "title":"Место хранения медиа-отчета" },
+    { "data": "HasPoster", "title":"Была ли подготовлена афиша?" },
+    { "data": "IssuedBooksCount", "title":"Количество выданных книг" },
+    { "data": "JuniorVisitorCount", "title":"..от 14 до 18 лет" },
+    { "data": "Location", "title":"Место провидения" },
+    { "data": "Owner_id", "title":"Оператор" },
+    { "data": "StartDate", "title":"Начало мероприятия" },
+    { "data": "Title", "title":"Название мероприятия" },
+    { "data": "VisitorCount", "title":"Количество участников" },
+    { "data": "id", "title":"Идентификатор" },
+    { "data": "Theme", "title":"Тема мероприятия" }
 
 ];  
 $(document).ready(function() {
@@ -45,52 +46,7 @@ $(document).ready(function() {
 </script>
 <table id="example" class="display table table-striped table-bordered"
        cellspacing="0" width="100%">
-       <thead>
-            <tr>
-                <th>Тип мероприятия</th>
-                <th>Отдел-организатор</th>
-                <th>Форма мероприятия</th>
-                <th>Оператор</th>
-                <th>Тема мероприятия</th>
-                <th>Название сопровождающей выставки</th>
-                <th>Была ли подготовлена афиша?</th>
-                <th>Место хранения медиа-отчета</th>
-                <th>Начало мероприятия</th>
-                <th>Окончание мероприятия</th>
-                <th>Название мероприятия</th>
-                <th>Описание содержания мероприятия</th>
-                <th>Регистратор мероприятия</th>
-                <th>Место провидения</th>
-                <th>Количество участников</th>
-                <th>.. из них детей 14 лет</th>
-                <th>..от 14 до 18 лет</th>
-                <th>Количество выставвленых книг</th>
-                <th>Количество выданных книг</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>Тип мероприятия</th>
-                <th>Отдел-организатор</th>
-                <th>Форма мероприятия</th>
-                <th>Оператор</th>
-                <th>Тема мероприятия</th>
-                <th>Название сопровождающей выставки</th>
-                <th>Была ли подготовлена афиша?</th>
-                <th>Место хранения медиа-отчета</th>
-                <th>Начало мероприятия</th>
-                <th>Окончание мероприятия</th>
-                <th>Название мероприятия</th>
-                <th>Описание содержания мероприятия</th>
-                <th>Регистратор мероприятия</th>
-                <th>Место провидения</th>
-                <th>Количество участников</th>
-                <th>.. из них детей 14 лет</th>
-                <th>..от 14 до 18 лет</th>
-                <th>Количество выставвленых книг</th>
-                <th>Количество выданных книг</th>
-            </tr>
-        </tfoot>
+       
        </table>
 <table class="table table-hover" id="collar">
                                        
