@@ -42,7 +42,11 @@ $(document).ready(function() {
     },
     { "data": "Department_id", 
       "title":"Отдел-организатор", 
-      options : departments,
+      options : function(){
+        return $.get("api/operator/departments", function(data) {
+          return data.data
+        });
+      },
       select2 : { width: "100%"},
       render: function (data, type, row, meta) {
           if (data == null || !(data in departments)) return null;
@@ -83,7 +87,7 @@ $(document).ready(function() {
      } {% endcomment %}
 
   ];
-  
+
   $('#example').DataTable( {
     "ajax": {
       "url" : "api/operator/events",
@@ -92,6 +96,7 @@ $(document).ready(function() {
         request.setRequestHeader("api-csrftoken", '{{ csrf_token }}');
       }
     },
+    scrollY: 800,
     columns: columns,
     responsive: true,
     dom: 'Bfrtip',        // Needs button container
