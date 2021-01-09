@@ -31,6 +31,6 @@ class EventView(viewsets.ModelViewSet):
 # Operator Views
 class EventOperatorView(viewsets.ModelViewSet):
     def get(self, request):
-    queryset = Event.objects.all()
-    serializer = EventSerializer(queryset, many=True)
-    return Response({"data": serializer.data})
+        queryset = Event.objects.all()
+        serializer = EventSerializer(queryset, many=True)
+        return Response({"data": serializer.data})
