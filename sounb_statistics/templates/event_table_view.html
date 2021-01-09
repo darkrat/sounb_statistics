@@ -38,7 +38,8 @@ $(document).ready(function() {
         request.setRequestHeader("api-csrftoken", '{{ csrf_token }}');
       }
     },
-    columns: columns
+    columns: columns,
+    responsive: true
   });
 });
 </script>
