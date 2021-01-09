@@ -31,14 +31,14 @@ class EventView(viewsets.ModelViewSet):
 # Operator Views
 class DepartmentOperatorView(viewsets.ModelViewSet):
     queryset = Department.objects.all()
-    serializer_class = DictionarySerializer
+    serializer_class = DepartmentSerializer
     permission_classes = [HasCsrfTokenValid,]
     
     def list(self, request):
         result = ""
         queryset = self.filter_queryset(self.get_queryset())
         #page = self.paginate_queryset(queryset)
-        serializer = DictionarySerializer(queryset, many=True)
+        serializer = DepartmentSerializer(queryset, many=True)
         for dep in serializer.data:
             result += "'%s':'%s'," % (dep["id"], dep["title"]) 
         return Response({"data": "{%s}" % result})
