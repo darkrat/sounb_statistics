@@ -36,7 +36,7 @@ class DepartmentOperatorView(viewsets.ModelViewSet):
     
     def list(self, request):
         result = ""
-        #queryset = self.filter_queryset(self.get_queryset())
+        queryset = self.filter_queryset(self.get_queryset())
         #page = self.paginate_queryset(queryset)
         serializer = DictionarySerializer(queryset, many=True)
         # for dep in serializer.data:
