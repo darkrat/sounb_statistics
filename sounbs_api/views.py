@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import ListSerializer, EventSerializer, DepartmentSerializer #, EventTitleSerializer
+from .serializers import ListSerializer, EventSerializer, DepartmentSerializer, EventTypeSerializer, EventFormSerializer, ThemeSerializer #, EventTitleSerializer
 from .permission import HasCsrfTokenValid
 from .models import Department,Event,EventForm,EventType,Theme
 # Create your views here.
@@ -37,12 +37,50 @@ class DepartmentOperatorView(viewsets.ModelViewSet):
     def list(self, request):
         result = ""
         queryset = self.filter_queryset(self.get_queryset())
-        #page = self.paginate_queryset(queryset)
         serializer = DepartmentSerializer(queryset, many=True)
         for dep in serializer.data:
             result += "'%s':'%s'," % (dep["id"], dep["title"]) 
         return Response({"data": "{%s}" % result})
-        #return Response({"data": serializer.data})
+
+class ThemeOperatorView(viewsets.ModelViewSet):
+    queryset = Theme.objects.all()
+    serializer_class = ThemeSerializer
+    permission_classes = [HasCsrfTokenValid,]
+    
+    def list(self, request):
+        result = ""
+        queryset = self.filter_queryset(self.get_queryset())
+        serializer = ThemeSerializer(queryset, many=True)
+        for dep in serializer.data:
+            result += "'%s':'%s'," % (dep["id"], dep["title"]) 
+        return Response({"data": "{%s}" % result})
+
+class EventTypeOperatorView(viewsets.ModelViewSet):
+    queryset = EventType.objects.all()
+    serializer_class = EventTypeSerializer
+    permission_classes = [HasCsrfTokenValid,]
+    
+    def list(self, request):
+        result = ""
+        queryset = self.filter_queryset(self.get_queryset())
+        serializer = EventTypeSerializer(queryset, many=True)
+        for dep in serializer.data:
+            result += "'%s':'%s'," % (dep["id"], dep["title"]) 
+        return Response({"data": "{%s}" % result})
+
+class EventFormOperatorView(viewsets.ModelViewSet):
+    queryset = EventForm.objects.all()
+    serializer_class =EventFormSerializer
+    permission_classes = [HasCsrfTokenValid,]
+    
+    def list(self, request):
+        result = ""
+        queryset = self.filter_queryset(self.get_queryset())
+        serializer = EventFormSerializer(queryset, many=True)
+        for dep in serializer.data:
+            result += "'%s':'%s'," % (dep["id"], dep["title"]) 
+        return Response({"data": "{%s}" % result})
+
 
 class EventOperatorView(viewsets.ModelViewSet):
     queryset = Event.objects.all()

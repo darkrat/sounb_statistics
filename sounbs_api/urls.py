@@ -10,4 +10,7 @@ router.register(r'eventforms', EventFormView)
 router.register(r'events', EventView)
 router.register(r'operator/events', EventOperatorView) 
 router.register(r'operator/departments', DepartmentOperatorView)
+router.register(r'operator/themes', ThemeOperatorView)
+router.register(r'operator/eventtypes', EventTypeOperatorView)
+router.register(r'operator/eventforms', EventFormOperatorView)
 urlpatterns = router.urls
