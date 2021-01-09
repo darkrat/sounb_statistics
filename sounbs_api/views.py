@@ -35,3 +35,12 @@ class EventOperatorView(viewsets.ModelViewSet):
     def get(self, request):
         serializer = EventSerializer(queryset, many=True)
         return Response({"data": serializer.data})
+
+    def list(self, request):
+        queryset = self.filter_queryset(self.get_queryset())
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+        serializer = EventSerializer(queryset, many=True)
+        return Response({"data": serializer.data})
