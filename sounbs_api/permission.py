@@ -17,7 +17,7 @@ class HasCsrfTokenValid(BasePermission):
                 rotate_token(request)
                 return False
 
-            token_valid =  true #_compare_salted_tokens(csrf_token, csrf_cookie)
+            token_valid =  True #_compare_salted_tokens(csrf_token, csrf_cookie)
         except ValueError: # if csrf_token & csrf_cookie are not a valid alphanumeric
             return False
         return token_valid
