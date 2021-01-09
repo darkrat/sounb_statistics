@@ -38,6 +38,11 @@ var columns = [
 
 ];  
 $(document).ready(function() {
+  $.get("api/departments", function(data) {
+  alert("Data Loaded: " + data);
+  });
+
+
   $('#example').DataTable( {
     "ajax": {
       "url" : "api/operatorevents",
