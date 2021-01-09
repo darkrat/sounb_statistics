@@ -3,9 +3,9 @@
 {% block page_content %}
 
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/brutusin-json-forms.min.css' %}" crossorigin="anonymous">
+{% comment %} <link rel="stylesheet" href="{% static 'css/brutusin-json-forms.min.css' %}" crossorigin="anonymous">
 <script src="{% static 'js/brutusin-json-forms.js'%}" crossorigin="anonymous"></script>
-<script src="{% static 'js/brutusin-json-forms-bootstrap.min.js'%}" crossorigin="anonymous"></script>
+<script src="{% static 'js/brutusin-json-forms-bootstrap.min.js'%}" crossorigin="anonymous"></script> {% endcomment %}
 {% include "event_table_view.html" %}
 
 {% endblock %}
