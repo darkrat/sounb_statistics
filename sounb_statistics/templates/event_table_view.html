@@ -1,3 +1,4 @@
+{% csrf_token %}
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.5.1.js" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
@@ -30,6 +31,7 @@ var columns = [
 $(document).ready(function() {
   $('#example').DataTable( {
     dom: "Bfrtip",
+    headers:{'api-csrftoken':'{{ csrf_token }}'},
     "ajax": "api/operatorevents",
     columns: columns
   });

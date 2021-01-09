@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import ListSerializer, EventSerializer #, EventTitleSerializer
-
+from .permission import HasCsrfTokenValid
 from .models import Department,Event,EventForm,EventType,Theme
 # Create your views here.
 
@@ -32,6 +32,7 @@ class EventView(viewsets.ModelViewSet):
 class EventOperatorView(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
+    permission_classes = [HasCsrfTokenValid,]
     def get(self, request):
         serializer = EventSerializer(queryset, many=True)
         return Response({"data": serializer.data})
