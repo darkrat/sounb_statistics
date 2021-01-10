@@ -107,7 +107,32 @@ var language = {
 };
 
 $(document).ready(function() {
-  var columns = [
+  
+  var buttons = [
+              {
+                  text: 'Добавить',
+                  name: 'add'        // do not change name
+              },
+              {
+                  extend: 'selected', // Bind to Selected row
+                  text: 'Редактировать',
+                  name: 'edit'        // do not change name
+              },
+              {
+                  extend: 'selected', // Bind to Selected row
+                  text: 'Удалить',
+                  name: 'delete'      // do not change name
+              },
+              {
+                  text: 'Обновить',
+                  name: 'refresh'      // do not change name
+              },
+              {extend: 'excel', text: 'Excel'},
+              {extend: 'csv', text: 'CSV'},
+              {extend: 'pdf', text: 'PDF'}
+          ];
+  Promise.all(promises).then(()=>{
+    var columns = [
     { 
       data: "Author", 
       title: "Регистратор мероприятия" 
@@ -233,30 +258,6 @@ $(document).ready(function() {
     } 
 
   ];
-  var buttons = [
-              {
-                  text: 'Добавить',
-                  name: 'add'        // do not change name
-              },
-              {
-                  extend: 'selected', // Bind to Selected row
-                  text: 'Редактировать',
-                  name: 'edit'        // do not change name
-              },
-              {
-                  extend: 'selected', // Bind to Selected row
-                  text: 'Удалить',
-                  name: 'delete'      // do not change name
-              },
-              {
-                  text: 'Обновить',
-                  name: 'refresh'      // do not change name
-              },
-              {extend: 'excel', text: 'Excel'},
-              {extend: 'csv', text: 'CSV'},
-              {extend: 'pdf', text: 'PDF'}
-          ];
-  Promise.all(promises).then(()=>{
     var table = $('#example').DataTable( {
       ajax: {
         "url" : "api/operator/events",
