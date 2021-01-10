@@ -43,7 +43,6 @@
 <script>
 var departments, eventtypes, eventforms, themes
 var promises = [];
-var employeeOptions = { "1" : "Номер раз", "2" : "Номер два" , "3" : "Номер три" };
 promises.push(new Promise(done=>{
     $.get("api/operator/departments", function(data) {
             departments = data.data
@@ -148,8 +147,7 @@ $(document).ready(function() {
     { 
       data: "Department_id", 
       title:"Отдел-организатор", 
-      options : employeeOptions,
-      option : departments,
+      options : departments,
       type : "select",
       select2 : { width: "100%"},
       render: function (data, type, row, meta) {
