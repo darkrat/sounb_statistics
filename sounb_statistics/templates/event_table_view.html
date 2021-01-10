@@ -43,7 +43,7 @@
 <script>
 var departments, eventtypes, eventforms, themes
 var promises = [];
-var employeeOptions = { "1" : "Employee", "2" : "Official" , "3" : "Director" };
+var employeeOptions = { "1" : "Номер раз", "2" : "Номер два" , "3" : "Номер три" };
 promises.push(new Promise(done=>{
     $.get("api/operator/departments", function(data) {
             departments = data.data
