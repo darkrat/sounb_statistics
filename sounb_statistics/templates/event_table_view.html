@@ -83,11 +83,11 @@ var language = {
   "altEditor" : {
     "modalClose" : "Закрыть",
     "edit" : {
-        "title" : "Редактировать",
+        "title" : "Сохранить",
         "button" : "Редактировать"
     },
     "add" : {
-        "title" : "Добавить",
+        "title" : "Сохранить",
         "button" : "Добавить"
     },
     "delete" : {
@@ -133,16 +133,15 @@ $(document).ready(function() {
   Promise.all(promises).then(()=>{
     var columns = [
     { 
-      data: "Author", 
-      title: "Регистратор мероприятия" 
-    },
-    { 
-      data: "BooksOnDisplayCount",
-      title: "Количество выставвленых книг" 
-    },
-    { 
-      data: "ChildVisitorCount",
-      title: ".. из них детей 14 лет" 
+      data: "EventType_id", 
+      title: "Тип мероприятия", 
+      options : eventtypes,
+      type : "select",
+      select2 : { width: "100%"},
+      render: function (data, type, row, meta) {
+          if (data == null || !(data in eventtypes)) return null;
+          return eventtypes[data];
+      } 
     },
     { 
       data: "Department_id", 
@@ -156,18 +155,14 @@ $(document).ready(function() {
       }
     },
     { 
-      data: "Description",
-      title: "Описание содержания мероприятия" 
+      data: "StartDate", 
+      title:"Начало мероприятия" ,
+      datetimepicker: { timepicker: true, format : "Y/m/d H:i"}
     },
     { 
       data: "EndDate", 
       title:"Окончание мероприятия",
       datetimepicker: { timepicker: true, format : "Y/m/d H:i"} 
-    },
-    { 
-      data: "StartDate", 
-      title:"Начало мероприятия" ,
-      datetimepicker: { timepicker: true, format : "Y/m/d H:i"}
     },
     { 
       data: "EventForm_id", 
@@ -181,67 +176,8 @@ $(document).ready(function() {
       } 
     },
     { 
-      data: "EventType_id", 
-      title: "Тип мероприятия", 
-      options : eventtypes,
-      type : "select",
-      select2 : { width: "100%"},
-      render: function (data, type, row, meta) {
-          if (data == null || !(data in eventtypes)) return null;
-          return eventtypes[data];
-      } 
-    },
-    { 
-      data: "ExpositionTitle", 
-      title: "Название сопровождающей выставки" 
-    },
-    { 
-      data: "HasPhotos", 
-      title: "Место хранения медиа-отчета" ,
-      type: "select",
-      options: [
-        "Да",
-        "Нет"
-        ]
-    },
-    { 
-      data: "HasPoster", 
-      title: "Была ли подготовлена афиша?", 
-      type: "select",
-      options: [
-      "Да",
-      "Нет"
-      ] 
-    },
-    { 
-      data: "IssuedBooksCount", 
-      title: "Количество выданных книг" 
-    },
-    { 
-      data: "JuniorVisitorCount", 
-      title: "..от 14 до 18 лет" 
-    },
-    { 
-      data: "Location", 
-      title: "Место провидения" 
-    },
-    { 
-      data: "Owner_id", 
-      title: "Оператор" 
-    },
-    { 
       data: "Title", 
       title: "Название мероприятия" 
-    },
-    { 
-      data: "VisitorCount", 
-      title: "Количество участников" 
-    },
-    { 
-      data: "id", 
-      title: "Идентификатор", 
-      type: "readonly", 
-      searchable: false
     },
     { 
       data: "Theme", 
@@ -253,8 +189,71 @@ $(document).ready(function() {
           if (data == null || !(data in themes)) return null;
           return themes[data];
       } 
-    } 
-
+    },
+    { 
+      data: "Location", 
+      title: "Место провидения" 
+    },
+    { 
+      data: "VisitorCount", 
+      title: "Количество присутствующих всего" 
+    },
+    { 
+      data: "ChildVisitorCount",
+      title: "В том числе: - дети до 14 лет" 
+    },
+    { 
+      data: "JuniorVisitorCount", 
+      title: "Молодежь в возрасте от 15 до 30 лет" 
+    },
+    { 
+      data: "ExpositionTitle", 
+      title: "Название сопровождающей выставки" 
+    },
+    { 
+      data: "BooksOnDisplayCount",
+      title: "Количество выставвленых книг" 
+    },
+    { 
+      data: "IssuedBooksCount", 
+      title: "Количество выданных книг" 
+    },
+    { 
+      data: "HasPoster", 
+      title: "Была ли подготовлена афиша?", 
+      type: "select",
+      options: [
+      "Да",
+      "Нет"
+      ] 
+    },
+    { 
+      data: "HasPhotos", 
+      title: "Место хранения медиа-отчета" ,
+      type: "select",
+      options: [
+        "Да",
+        "Нет"
+        ]
+    },
+    { 
+      data: "Description",
+      title: "Описание содержания мероприятия" 
+    },
+    { 
+      data: "Author", 
+      title: "Ответственный за мероприятие" 
+    },
+    { 
+      data: "Owner_id", 
+      title: "Регистратор мероприятия" 
+    },
+    { 
+      data: "id", 
+      title: "Идентификатор", 
+      type: "readonly", 
+      searchable: false
+    }
   ];
     var table = $('#example').DataTable( {
       ajax: {
