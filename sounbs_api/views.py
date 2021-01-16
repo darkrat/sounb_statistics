@@ -81,7 +81,6 @@ class EventFormOperatorView(viewsets.ModelViewSet):
             result.update({dep["id"]: dep["title"]})
         return Response({"data": result})
 
-
 class EventOperatorView(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
@@ -98,3 +97,5 @@ class EventOperatorView(viewsets.ModelViewSet):
             return self.get_paginated_response(serializer.data)
         serializer = EventSerializer(queryset, many=True)
         return Response({"data": serializer.data})
+
+    
