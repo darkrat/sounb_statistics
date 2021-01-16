@@ -274,20 +274,26 @@ $(document).ready(function() {
       language: language,
       buttons: buttons,
       onAddRow: function(datatable, rowdata, success, error) {
-              $.ajax({
-                  // a tipycal url would be / with type='PUT'
-                  url: "api/operator/events/",
-                  type: 'PUT',
-                  data: rowdata,
-                  success: success,
-                  error: error
-              });
-          },
+          $.ajax({
+              // a tipycal url would be / with type='PUT'
+              url: "api/operator/events/",
+              type: 'PUT',
+              'beforeSend': function (request) {
+                request.setRequestHeader("api-csrftoken", '{{ csrf_token }}');
+              }
+              data: rowdata,
+              success: success,
+              error: error
+          });
+        },
       onDeleteRow: function(datatable, rowdata, success, error) {
           $.ajax({
               // a tipycal url would be /{id} with type='DELETE'
               url: "api/operator/events/{id}",
               type: 'DELETE',
+              'beforeSend': function (request) {
+                    request.setRequestHeader("api-csrftoken", '{{ csrf_token }}');
+              }
               data: rowdata,
               success: success,
               error: error
@@ -298,6 +304,9 @@ $(document).ready(function() {
               // a tipycal url would be /{id} with type='POST'
               url: "api/operator/events/{id}",
               type: 'POST',
+              'beforeSend': function (request) {
+                    request.setRequestHeader("api-csrftoken", '{{ csrf_token }}');
+              }
               data: rowdata,
               success: success,
               error: error
