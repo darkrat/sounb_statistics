@@ -277,7 +277,7 @@ $(document).ready(function() {
           $.ajax({
               // a tipycal url would be / with type='PUT'
               url: "api/operator/events/",
-              type: 'PUT',
+              type: 'POST',
               'beforeSend': function (request) {
                 request.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
               },
@@ -303,7 +303,7 @@ $(document).ready(function() {
           $.ajax({
               // a tipycal url would be /{id} with type='POST'
               url: "api/operator/events/{id}",
-              type: 'POST',
+              type: 'PUT',
               'beforeSend': function (request) {
                     request.setRequestHeader("api-csrftoken", '{{ csrf_token }}');
               },
