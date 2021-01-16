@@ -31,8 +31,8 @@ class Event(models.Model):
     ExpositionTitle = models.CharField(max_length=255, verbose_name='Название сопровождающей выставки',help_text='Введите название выставки')
     HasPoster = models.BooleanField(default=False, verbose_name='Была ли подготовлена афиша?')
     HasPhotos = models.BooleanField(default=False, verbose_name='Место хранения медиа-отчета') # TODO: что тут? строка или полу есть ли фото???
-    StartDate = models.DateTimeField(verbose_name='Начало мероприятия')
-    EndDate = models.DateTimeField(verbose_name='Окончание мероприятия')
+    StartDate = models.DateField(verbose_name='Начало мероприятия')
+    EndDate = models.DateField(verbose_name='Окончание мероприятия')
     Title = models.CharField(max_length=255, verbose_name='Название мероприятия',help_text='Введите название мероприятия')
     Description = models.TextField(verbose_name='Описание содержания мероприятия',help_text='Опишите мероприятие')
     Author = models.CharField(max_length=255, verbose_name='Регистратор мероприятия',help_text='ФИО оператора, по данным авторизации')

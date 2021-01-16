@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'sounbs_operator',
 ]
 
+# REST_FRAMEWORK = {
+#     "DATE_INPUT_FORMATS": ["%d-%m-%Y"],
+# }
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
