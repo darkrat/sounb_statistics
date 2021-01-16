@@ -280,7 +280,7 @@ $(document).ready(function() {
               type: 'PUT',
               'beforeSend': function (request) {
                 request.setRequestHeader("api-csrftoken", '{{ csrf_token }}');
-              }
+              },
               data: rowdata,
               success: success,
               error: error
@@ -293,7 +293,7 @@ $(document).ready(function() {
               type: 'DELETE',
               'beforeSend': function (request) {
                     request.setRequestHeader("api-csrftoken", '{{ csrf_token }}');
-              }
+              },
               data: rowdata,
               success: success,
               error: error
@@ -306,7 +306,7 @@ $(document).ready(function() {
               type: 'POST',
               'beforeSend': function (request) {
                     request.setRequestHeader("api-csrftoken", '{{ csrf_token }}');
-              }
+              },
               data: rowdata,
               success: success,
               error: error
