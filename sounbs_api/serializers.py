@@ -4,32 +4,37 @@ from .models import Event, Department, EventType, EventForm, Theme
 
 class ListSerializer(serializers.Serializer):
     title = serializers.CharField(max_length=255)
+    depth = 1
 
 class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Department
         fields = ('id','title')
+        depth = 1
 
 class EventTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = EventType
         fields = ('id','title')
+        depth = 1
 
 class EventFormSerializer(serializers.ModelSerializer):
     class Meta:
         model = EventForm
         fields = ('id','title')
+        depth = 1
 
 class ThemeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Theme
         fields = ('id','title')
+#        depth = 1
 
 class EventSerializer(serializers.ModelSerializer):
-    Department_id = serializers.CharField(source='Department.id', read_only=True)
-    Theme_id = serializers.CharField(source='Theme.id', read_only=True)
-    EventForm_id = serializers.CharField(source='EventForm.id', read_only=True)
-    EventType_id = serializers.CharField(source='EventType.id', read_only=True)
+    Department_id = serializers.PrimaryKeyRelatedField() # serializers.CharField(source='Department.id', read_only=True)
+    Theme_id = serializers.PrimaryKeyRelatedField() # serializers.CharField(source='Theme.id', read_only=True)
+    EventForm_id = serializers.PrimaryKeyRelatedField() # serializers.CharField(source='EventForm.id', read_only=True)
+    EventType_id = serializers.PrimaryKeyRelatedField() # serializers.CharField(source='EventType.id', read_only=True)
 
     class Meta:
         model = Event
