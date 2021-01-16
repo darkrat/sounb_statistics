@@ -279,7 +279,7 @@ $(document).ready(function() {
               url: "api/operator/events/",
               type: 'PUT',
               'beforeSend': function (request) {
-                request.setRequestHeader("api-csrftoken", '{{ csrf_token }}');
+                request.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
               },
               data: rowdata,
               success: success,
