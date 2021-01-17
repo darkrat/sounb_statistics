@@ -31,15 +31,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.js" ></script>
 <script src="{% static 'js/dataTables.altEditor.free.js'%}" crossorigin="anonymous"></script>
 
-
-
-
-
-
-
-
-
-
 <script>
 var users = { '{{ user.id }}' : '{{ user.last_name }} {{ user.first_name }}'}
 var departments, eventtypes, eventforms, themes
@@ -55,13 +46,11 @@ promises.push(new Promise(done=>{
     eventtypes = data.data
   }).done(done);
 }));
-
 promises.push(new Promise(done=>{
   $.get("api/operator/eventforms", function(data) {
     eventforms = data.data
   }).done(done);
 }));
-
 promises.push(new Promise(done=>{
   $.get("api/operator/themes", function(data) {
     themes = data.data
@@ -234,7 +223,8 @@ $(document).ready(function() {
     },
     { 
       data: "Description",
-      title: "Описание содержания мероприятия" 
+      title: "Описание содержания мероприятия"
+      rows: 6
     },
     { 
       data: "Author", 
