@@ -42,6 +42,7 @@ class EventSerializer(serializers.ModelSerializer):
     
     def create(self, validated_data):
         print( validated_data)
+        print(self)
         id_department = validated_data.pop('Department_id')
         print('create event: id_department=',id_department)
         id_theme = validated_data.pop('Theme_id')
