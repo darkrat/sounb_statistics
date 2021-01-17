@@ -303,7 +303,7 @@ $(document).ready(function() {
       onEditRow: function(datatable, rowdata, success, error) {
           $.ajax({
               // a tipycal url would be /{id} with type='POST'
-              url: "api/operator/events/"+rowdata.id,
+              url: "api/operator/events/"+rowdata.id+"/",
               type: 'PUT',
               'beforeSend': function (request) {
                     request.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
