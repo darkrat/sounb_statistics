@@ -29,7 +29,7 @@
 <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js" ></script>
 <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.js" ></script>
-{% comment %} <script src="{% static 'js/dataTables.altEditor.free.js'%}" crossorigin="anonymous"></script> {% endcomment %}
+<script src="{% static 'js/dataTables.altEditor.free.js'%}" crossorigin="anonymous"></script>
 
 
 
@@ -153,17 +153,20 @@ $(document).ready(function() {
       render: function (data, type, row, meta) {
           if (data == null || !(data in departments)) return null;
           return departments[data];
-      }
+      },
+      "required" : true
     },
     { 
       data: "StartDate", 
       title:"Дата начала" ,
-      datetimepicker: { timepicker: false, format : "yy-m-d", language: 'ru'}
+      datetimepicker: { timepicker: false, format : "yy-m-d", language: 'ru'},
+      "required" : true
     },
     { 
       data: "EndDate", 
       title:"Дата окончания",
-      datetimepicker: { timepicker: false, format : "yy-m-d", language: 'ru'} 
+      datetimepicker: { timepicker: false, format : "yy-m-d", language: 'ru'},
+      "required" : true 
     },
     { 
       data: "EventForm_id", 
