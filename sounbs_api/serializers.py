@@ -41,6 +41,7 @@ class EventSerializer(serializers.ModelSerializer):
         fields = ('id', 'Theme_id', 'ExpositionTitle', 'HasPoster', 'HasPhotos', 'StartDate', 'EndDate', 'Title', 'Description', 'Author', 'Location', 'VisitorCount', 'ChildVisitorCount', 'JuniorVisitorCount', 'BooksOnDisplayCount', 'IssuedBooksCount', 'Department_id', 'EventForm_id', 'EventType_id', 'Owner_id')
     
     def create(self, validated_data):
+        print( validated_data)
         id_department = validated_data.pop('Department_id')
         print('create event: id_department=',id_department)
         id_theme = validated_data.pop('Theme_id')
