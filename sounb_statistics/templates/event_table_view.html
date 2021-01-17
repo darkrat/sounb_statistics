@@ -32,10 +32,6 @@
 <script src="{% static 'js/dataTables.altEditor.free.js'%}" crossorigin="anonymous"></script>
 
 <script>
-$('#topnavbar').on('affix.bs.affix affix-top.bs.affix', function (e) {
-    var padding = e.type === 'affix' ? $(this).height() : '';
-    $('body').css('padding-top', padding);
-});
 var users = { '{{ user.id }}' : '{{ user.last_name }} {{ user.first_name }}'}
 var departments, eventtypes, eventforms, themes
 var promises = [];
@@ -313,6 +309,9 @@ $(document).ready(function() {
   });
 });
 </script>
-<div class="container-fluid">
+<br>
+<br>
+<br>
+
+<br>
   <table id="example" class="dataTable table table-striped nowrap"></table>
-</div>
