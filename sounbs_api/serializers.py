@@ -31,10 +31,10 @@ class ThemeSerializer(serializers.ModelSerializer):
 #        depth = 1
 
 class EventSerializer(serializers.ModelSerializer):
-    Department_id = serializers.PrimaryKeyRelatedField(queryset=Department.objects.all()) # serializers.CharField(source='Department.id', read_only=True)
-    Theme_id = serializers.PrimaryKeyRelatedField(queryset=Theme.objects.all()) # serializers.CharField(source='Theme.id', read_only=True)
-    EventForm_id = serializers.PrimaryKeyRelatedField(queryset=EventForm.objects.all()) # serializers.CharField(source='EventForm.id', read_only=True)
-    EventType_id = serializers.PrimaryKeyRelatedField(queryset=EventType.objects.all()) # serializers.CharField(source='EventType.id', read_only=True)
+#    Department_id = serializers.PrimaryKeyRelatedField(queryset=Department.objects.all()) # serializers.CharField(source='Department.id', read_only=True)
+#    Theme_id = serializers.PrimaryKeyRelatedField(queryset=Theme.objects.all()) # serializers.CharField(source='Theme.id', read_only=True)
+#    EventForm_id = serializers.PrimaryKeyRelatedField(queryset=EventForm.objects.all()) # serializers.CharField(source='EventForm.id', read_only=True)
+#    EventType_id = serializers.PrimaryKeyRelatedField(queryset=EventType.objects.all()) # serializers.CharField(source='EventType.id', read_only=True)
 #    Owner_id = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Event
@@ -44,8 +44,11 @@ class EventSerializer(serializers.ModelSerializer):
         id_department = validated_data.pop('Department_id')
         print('create event: id_department=',id_department)
         id_theme = validated_data.pop('Theme_id')
+        print('create event: id_theme=',id_theme)
         id_eventform = validated_data.pop('EventForm_id')
+        print('create event: id_eventform=',id_eventform)
         id_eventtype = validated_data.pop('EventType_id')
+        print('create event: id_eventtype=',id_eventtype)
 
         department = Department.objects.get_or_create(id=id_department)[0]
 
