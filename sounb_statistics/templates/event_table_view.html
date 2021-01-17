@@ -126,6 +126,12 @@ $(document).ready(function() {
   Promise.all(promises).then(()=>{
     var columns = [
     { 
+      data: "id", 
+      title: "№", 
+      type: "readonly", 
+      searchable: false
+    },
+    { 
       data: "EventType_id", 
       title: "Тип мероприятия", 
       options : eventtypes,
@@ -243,12 +249,6 @@ $(document).ready(function() {
           if (data == null || !(data in users)) return null;
           return users[data];
       }
-    },
-    { 
-      data: "id", 
-      title: "Идентификатор", 
-      type: "readonly", 
-      searchable: false
     }
   ];
     var table = $('#example').DataTable( {
