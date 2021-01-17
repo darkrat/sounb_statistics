@@ -252,7 +252,7 @@ $(document).ready(function() {
         "url" : "api/operator/events",
         "type": "get",
         'beforeSend': function (request) {
-          request.setRequestHeader("api-csrftoken", '{{ csrf_token }}');
+          request.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
         }
       },
       columns: columns,
@@ -284,7 +284,7 @@ $(document).ready(function() {
               url: "api/operator/events/{id}",
               type: 'DELETE',
               'beforeSend': function (request) {
-                    request.setRequestHeader("api-csrftoken", '{{ csrf_token }}');
+                    request.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
               },
               data: rowdata,
               success: success,
@@ -297,7 +297,7 @@ $(document).ready(function() {
               url: "api/operator/events/{id}",
               type: 'PUT',
               'beforeSend': function (request) {
-                    request.setRequestHeader("api-csrftoken", '{{ csrf_token }}');
+                    request.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
               },
               data: rowdata,
               success: success,
