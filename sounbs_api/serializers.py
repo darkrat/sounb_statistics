@@ -31,10 +31,10 @@ class ThemeSerializer(serializers.ModelSerializer):
 #        depth = 1
 
 class EventSerializer(serializers.ModelSerializer):
-    Department_id = serializers.CharField(source='Department_id', read_only=False)
-    Theme_id = serializers.CharField(source='Theme_id', read_only=False)
-    EventForm_id = serializers.CharField(source='EventForm_id', read_only=False)
-    EventType_id = serializers.CharField(source='EventType_id', read_only=False)
+    Department_id = serializers.CharField(read_only=False)
+    Theme_id = serializers.CharField(read_only=False)
+    EventForm_id = serializers.CharField(read_only=False)
+    EventType_id = serializers.CharField(read_only=False)
 #    Owner_id = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Event
