@@ -23,11 +23,11 @@ class Theme(models.Model):
         return self.title
 
 class Event(models.Model):
-    EventType = models.ForeignKey('EventType', on_delete=models.CASCADE, verbose_name='Тип мероприятия',help_text='Массовое мероприятие')
-    Department = models.ForeignKey('Department', on_delete=models.CASCADE, verbose_name='Отдел-организатор',help_text='Выберите из списка')
-    EventForm = models.ForeignKey('EventForm', on_delete=models.CASCADE, verbose_name='',help_text='Выберите из списка')
-    Owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name='Оператор')
-    Theme = models.ForeignKey('Theme', on_delete=models.CASCADE, verbose_name='Тема мероприятия',help_text='Выберите из списка')
+    EventType = models.ForeignKey('EventType', on_delete=models.CASCADE, related_name = 'EventType',  verbose_name='Тип мероприятия',help_text='Массовое мероприятие')
+    Department = models.ForeignKey('Department', on_delete=models.CASCADE, related_name = 'Department', verbose_name='Отдел-организатор',help_text='Выберите из списка')
+    EventForm = models.ForeignKey('EventForm', on_delete=models.CASCADE, related_name = 'EventForm', verbose_name='',help_text='Выберите из списка')
+    Owner = models.ForeignKey(get_user_model(), related_name = 'Owner', on_delete=models.CASCADE, verbose_name='Оператор')
+    Theme = models.ForeignKey('Theme', on_delete=models.CASCADE, related_name = 'Theme', verbose_name='Тема мероприятия',help_text='Выберите из списка')
     ExpositionTitle = models.CharField(max_length=255, verbose_name='Название сопровождающей выставки',help_text='Введите название выставки')
     HasPoster = models.BooleanField(default=False, verbose_name='Была ли подготовлена афиша?')
     HasPhotos = models.BooleanField(default=False, verbose_name='Место хранения медиа-отчета') # TODO: что тут? строка или полу есть ли фото???
