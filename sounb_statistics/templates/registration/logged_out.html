@@ -1,8 +1,6 @@
 {% extends "base.html" %}
-{% load static %}
-{% app_title %}
 {% block page_content %}
-<p>Вы успешно вышли из системы {{app_title}}</p>  
+<p>Вы успешно вышли из системы</p>  
 
-<a href="{% url 'login'%}">Войти в {{app_title}}</a>
+<a href="{% url 'login'%}">Войти в систему</a>
 {% endblock %}
