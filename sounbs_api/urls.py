@@ -13,4 +13,5 @@ router.register(r'operator/departments', DepartmentOperatorView)
 router.register(r'operator/themes', ThemeOperatorView)
 router.register(r'operator/eventtypes', EventTypeOperatorView)
 router.register(r'operator/eventforms', EventFormOperatorView)
+#router.register(r'administrator/eventforms', EventFormOperatorView) ???
 urlpatterns = router.urls
