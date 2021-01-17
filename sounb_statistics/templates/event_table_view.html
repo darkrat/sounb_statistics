@@ -279,10 +279,10 @@ $(document).ready(function() {
           });
         },
       onDeleteRow: function(datatable, rowdata, success, error) {
-          var id = table.row( { selected: true } ).id();
+          alert(+idrow);
           $.ajax({
               // a tipycal url would be /{id} with type='DELETE'
-              url: "api/operator/events/"+id,
+              url: "api/operator/events/"+rowdata.id,
               type: 'DELETE',
               'beforeSend': function (request) {
                     request.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
@@ -293,10 +293,9 @@ $(document).ready(function() {
           });
         },
       onEditRow: function(datatable, rowdata, success, error) {
-          var id = table.row( { selected: true } ).id();
           $.ajax({
               // a tipycal url would be /{id} with type='POST'
-              url: "api/operator/events/"+id,
+              url: "api/operator/events/"+rowdata.id,
               type: 'PUT',
               'beforeSend': function (request) {
                     request.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
