@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-
+{% app_title %}
 {% block page_content %}
 <p>Вы успешно вышли из системы {{app_title}}</p>  
 
-<a href="{% url 'login'%}">Выйти в {{app_title}}</a>
+<a href="{% url 'login'%}">Войти в {{app_title}}</a>
 {% endblock %}
