@@ -31,7 +31,11 @@ class ThemeSerializer(serializers.ModelSerializer):
 #        depth = 1
 
 class EventSerializer(serializers.ModelSerializer):
-
+    Department_id = serializers.CharField(source='Department.id', read_only=False)
+    Theme_id = serializers.CharField(source='Theme.id', read_only=False)
+    EventForm_id = serializers.CharField(source='EventForm.id', read_only=False)
+    EventType_id = serializers.CharField(source='EventType.id', read_only=False)
+#    Owner_id = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Event
         fields = ('id', 'Theme_id', 'ExpositionTitle', 'HasPoster', 'HasPhotos', 'StartDate', 'EndDate', 'Title', 'Description', 'Author', 'Location', 'VisitorCount', 'ChildVisitorCount', 'JuniorVisitorCount', 'BooksOnDisplayCount', 'IssuedBooksCount', 'Department_id', 'EventForm_id', 'EventType_id', 'Owner_id')
