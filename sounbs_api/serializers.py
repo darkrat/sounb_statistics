@@ -40,25 +40,25 @@ class EventSerializer(serializers.ModelSerializer):
         model = Event
         fields = ('id', 'Theme_id', 'ExpositionTitle', 'HasPoster', 'HasPhotos', 'StartDate', 'EndDate', 'Title', 'Description', 'Author', 'Location', 'VisitorCount', 'ChildVisitorCount', 'JuniorVisitorCount', 'BooksOnDisplayCount', 'IssuedBooksCount', 'Department_id', 'EventForm_id', 'EventType_id', 'Owner_id')
     
-    def create(self, validated_data):
-        print( validated_data)
-        print(self)
-        id_department = validated_data.pop('Department_id')
-        print('create event: id_department=',id_department)
-        id_theme = validated_data.pop('Theme_id')
-        print('create event: id_theme=',id_theme)
-        id_eventform = validated_data.pop('EventForm_id')
-        print('create event: id_eventform=',id_eventform)
-        id_eventtype = validated_data.pop('EventType_id')
-        print('create event: id_eventtype=',id_eventtype)
+    # def create(self, validated_data):
+    #     print( validated_data)
+    #     print(self)
+    #     id_department = validated_data.pop('Department_id')
+    #     print('create event: id_department=',id_department)
+    #     id_theme = validated_data.pop('Theme_id')
+    #     print('create event: id_theme=',id_theme)
+    #     id_eventform = validated_data.pop('EventForm_id')
+    #     print('create event: id_eventform=',id_eventform)
+    #     id_eventtype = validated_data.pop('EventType_id')
+    #     print('create event: id_eventtype=',id_eventtype)
 
-        department = Department.objects.get_or_create(id=id_department)[0]
+    #     department = Department.objects.get_or_create(id=id_department)[0]
 
-        theme = Theme.objects.get_or_create(id=id_theme)[0]
-        eventform = EventForm.objects.get_or_create(id=id_eventform)[0]
-        eventtype = EventType.objects.get_or_create(id=id_eventtype)[0]
-        event = Event.objtects.create(Department_id=Department.id, Theme_id=id_theme,EventForm_id=id_eventform,EventType_id=id_eventtype)
-        return event
+    #     theme = Theme.objects.get_or_create(id=id_theme)[0]
+    #     eventform = EventForm.objects.get_or_create(id=id_eventform)[0]
+    #     eventtype = EventType.objects.get_or_create(id=id_eventtype)[0]
+    #     event = Event.objtects.create(Department_id=Department.id, Theme_id=id_theme,EventForm_id=id_eventform,EventType_id=id_eventtype)
+    #     return event
 # class EventTitleSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model = Event
