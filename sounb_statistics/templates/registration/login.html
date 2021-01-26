@@ -17,7 +17,6 @@
             <label class="col-md-4 control-label" for="textinput">{{ form.username.label_tag }}</label>  
             <div class="col-md-4">
             {{ form.username }}
-            {% comment %} <input id="textinput" name="textinput" type="text" placeholder="Введите логин пользователя" class="form-control input-md" required=""> {% endcomment %}
             <span class="help-block">Введите логин пользователя</span>  
             </div>
           </div>
@@ -27,7 +26,6 @@
             <label class="col-md-4 control-label" for="passwordinput">{{ form.password.label_tag }}</label>
             <div class="col-md-4">
               {{ form.password }}
-              {% comment %} <input id="passwordinput" name="passwordinput" type="password" placeholder="Введите пароль" class="form-control input-md" required=""> {% endcomment %}
               <span class="help-block">Введите пароль пользователя</span>
             </div>
           </div>
@@ -37,7 +35,6 @@
             <label class="col-md-4 control-label" for="singlebutton"></label>
             <div class="col-md-4">
               <input class="btn btn-primary" type="submit" value="Войти" />
-              {% comment %} <button id="singlebutton" name="singlebutton" >Войти</button> {% endcomment %}
             </div>
           </div>
 
@@ -46,39 +43,11 @@
             <label class="col-md-4 control-label" for="singlebutton"></label>
             <div class="col-md-4">
               <a class="btn btn-primary btn-large btn-warning" href="{% url 'password_reset' %}">Забытый пароль?</a>
-              {% comment %} <button id="singlebutton" name="singlebutton" class="btn ">Забытый пароль?</button> {% endcomment %}
-            </div>
+             </div>
           </div>
 
           </fieldset>
           </form>
-{% comment %} 
-
-
-
-        
-      <form >
-      
-      <table>
-      <tr>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr>
-        <td></td>
-        <td></td>
-      </tr>
-      </table>
-
-      <input type="submit" value="Войти" />
-      <input type="hidden" name="next" value="{{ next }}" />
-      </form>
-
- {% endcomment %}
-
-
-
         {% if form.errors %}
           <div class="alert alert-danger" role="alert">
             Имя пользователя или пароль некорректны. Попробуйте ещё раз
@@ -97,13 +66,6 @@
             </div>
           {% endif %}
         {% endif %}
-{% comment %} 
-
-      {# Assumes you setup the password_reset view in your URLconf #}
-      <p>
-        <a class="btn btn-primary btn-large" href="{% url 'password_reset' %}">Забытый пароль?</a>
-      </p> {% endcomment %}
-
 			</div>
 		</div>
 	</div>
