@@ -8,12 +8,12 @@
 
 {% block page_nav_bar %}
 <!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-expand-md fixed-top navbar-dark info-color">
   <div class="container-fluid">
     <div class="navbar-header">
         <a class="navbar-brand" href="#">{{app_title}}</a>
       </div>
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav float-md-right">
           <li class="nav-item">
             <a class="nav-link" href="#">
             {% if user.is_authenticated %}
