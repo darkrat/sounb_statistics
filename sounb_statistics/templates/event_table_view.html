@@ -161,6 +161,12 @@ var language = {
 };
 
 $(document).ready(function() {
+
+  $('#search-form').append(
+    function (columns){
+        return "<h2>Hello!</h2>"
+    }
+  );
   $("#sidebar").mCustomScrollbar({
         theme: "minimal"
   });
