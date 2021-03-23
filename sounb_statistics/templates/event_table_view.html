@@ -141,12 +141,24 @@ var language = {
 };
 
 $(document).ready(function() {
+  
 
-  $('#search-form').append(
-    function (columns){
-        return "<h2>Hello!</h2>"
-    }
-  );
+  <div class="form-group tpl-input">
+    <label for="text" class="control-label col-xs-3">Text Field</label> 
+    <div class="col-xs-9">
+      <input id="text" name="text" type="text" class="form-control">
+    </div>
+  </div>
+  function (){
+        var clone = $("#templates.tpl-input").clone();
+        clone.removeClass("tpl-input");
+        clone.find(".control-label").for("1");
+        clone.find(".control-label").value("input");
+        clone.find(".form-control").id("1");
+        clone.find(".form-control").name("1");
+        $("#search-form").append(clone);
+    };
+    
   $("#sidebar").mCustomScrollbar({
         theme: "minimal"
   });
@@ -402,11 +414,11 @@ $(document).ready(function() {
       <br>
       <br>
     </div>
-    
-    <div id="search-form">
+    <form id="search-form" class="form-horizontal">
+    <div >
         <button type="button" class="btn btn-primary dismiss">Применить</button>
     </div>
-    
+    </form>
     <ul class="list-unstyled components">
         <p>Dummy Heading</p>
         <li class="active">
@@ -458,3 +470,48 @@ $(document).ready(function() {
 
 
 <div class="overlay"></div>
+
+<div id="templates" class="hidden">
+
+  <div class="form-group tpl-input">
+    <label for="text" class="control-label col-xs-3">Text Field</label> 
+    <div class="col-xs-9">
+      <input id="text" name="text" type="text" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group tpl-select">
+    <label for="select" class="control-label col-xs-3">Select</label> 
+    <div class="col-xs-9">
+      <select id="select" name="select" class="select form-control">
+        <option value="rabbit">Rabbit</option>
+        <option value="duck">Duck</option>
+        <option value="fish">Fish</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group tpl-checkbox">
+    <label for="checkbox" class="control-label col-xs-3">Checkboxes</label> 
+    <div class="col-xs-9">
+      <label class="checkbox-inline">
+        <input type="checkbox" name="checkbox" checked="checked" value="rabbit">
+              Rabbit
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" name="checkbox" value="duck">
+              Duck
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" name="checkbox" value="fish">
+              Fish
+      </label>
+    </div>
+  </div> 
+  <div class="form-group row">
+    <div class="col-xs-offset-3 col-xs-9">
+      <button name="submit" type="submit" class="btn btn-primary">Поиск</button>
+    </div>
+  </div>
+</form>
+</div>
