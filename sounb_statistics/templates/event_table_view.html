@@ -316,7 +316,8 @@ $(document).ready(function() {
   ];
   
   $.each(columns, function( index, value ) {
-    template = $.templates("#tmp-"+ value.type || "input");
+    var type = typeof value.type !== 'undefined' ? value.type : "input";
+    template = $.templates("#tmp-"+ type);
     var htmlOutput = template.render(value);
     $("#search-form").append(htmlOutput);
   });
