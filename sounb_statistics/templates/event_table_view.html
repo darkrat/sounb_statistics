@@ -409,13 +409,8 @@ $(document).ready(function() {
 
 <script id="tmp-input" type="text/x-jsrender">
   <div class="row">
-      <div class="col">
-      <label for="{% templatetag openvariable %}:data{% templatetag closevariable %}" class="control-label">{% templatetag openvariable %}:title{% templatetag closevariable %}</label> 
-        </div>
-      <div class="col">
-        <input id="{% templatetag openvariable %}:data{% templatetag closevariable %}" name="{% templatetag openvariable %}:data{% templatetag closevariable %}" type="text">
-      </div>
-      <div class="col"></div>
+      <label for="{% templatetag openvariable %}:data{% templatetag closevariable %}" class="control-label col">{% templatetag openvariable %}:title{% templatetag closevariable %}</label> 
+        <input class="col" id="{% templatetag openvariable %}:data{% templatetag closevariable %}" name="{% templatetag openvariable %}:data{% templatetag closevariable %}" type="text">
     </div>
   <div>
 </div>
