@@ -334,7 +334,7 @@ $(document).ready(function() {
         break;
       default:
         var template = $.templates("#tmp-input");
-        var htmlOutput = template.render(data);
+        var htmlOutput = template.render(value);
         $("#search-form").append(htmlOutput);
     }
   });
