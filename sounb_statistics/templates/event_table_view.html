@@ -320,6 +320,9 @@ $(document).ready(function() {
       case "readonly":
         break;
       case "select":
+        var template = $.templates("#tmp-select");
+        var htmlOutput = template.render(value);
+        $("#search-form").append(htmlOutput);
         break;
       case "checkbox":
         break;
@@ -405,7 +408,7 @@ $(document).ready(function() {
       <br>
       <br>
     </div>
-    <div id="search-form" class="form-horizontal">
+    <div id="search-form" >
     <div >
         <button type="button" class="btn btn-primary dismiss">Применить</button>
     </div>
@@ -421,16 +424,40 @@ $(document).ready(function() {
 </div>
 </script>
 
+<script id="tmp-select" type="text/x-jsrender">
+  <div class="form-group tpl-select">
+    <label for="{% templatetag openvariable %}:data{% templatetag closevariable %}" class="control-label col-xs-3">{% templatetag openvariable %}:title{% templatetag closevariable %}</label> 
+    <div class="col-xs-9">
+      <select id="{% templatetag openvariable %}:data{% templatetag closevariable %}" name="{% templatetag openvariable %}:data{% templatetag closevariable %}" class="select form-control">
+        {^{for options}}
+          <option value="{{:id}}">{{:name}}</option>
+        {{/for}}
+      </select>
+    </div>
+  </div>
+</script>
+
+<script id="tmp-checkbox" type="text/x-jsrender">
+  <div class="form-group w-100 p-3">
+      <label for="{% templatetag openvariable %}:data{% templatetag closevariable %}" class="control-label">{% templatetag openvariable %}:title{% templatetag closevariable %}</label> 
+      <input id="{% templatetag openvariable %}:data{% templatetag closevariable %}" name="{% templatetag openvariable %}:data{% templatetag closevariable %}" type="text">
+    </div>
+  <div>
+</div>
+</script>
+
+<script id="tmp-datepicker" type="text/x-jsrender">
+  <div class="form-group w-100 p-3">
+      <label for="{% templatetag openvariable %}:data{% templatetag closevariable %}" class="control-label">{% templatetag openvariable %}:title{% templatetag closevariable %}</label> 
+      <input id="{% templatetag openvariable %}:data{% templatetag closevariable %}" name="{% templatetag openvariable %}:data{% templatetag closevariable %}" type="text">
+    </div>
+  <div>
+</div>
+</script>
 <div class="overlay"></div>
 
 <div id="templates" class="hidden">
 
-  <div class="form-group tpl-input">
-    <label for="text" class="control-label col-xs-3">Text Field</label> 
-    <div class="col-xs-9">
-      <input id="text" name="text" type="text" class="form-control">
-    </div>
-  </div>
 
   <div class="form-group tpl-select">
     <label for="select" class="control-label col-xs-3">Select</label> 
