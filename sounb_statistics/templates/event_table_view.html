@@ -430,7 +430,7 @@ $(document).ready(function() {
     <div class="col-xs-9">
       <select id="{% templatetag openvariable %}:data{% templatetag closevariable %}" name="{% templatetag openvariable %}:data{% templatetag closevariable %}" class="select form-control">
         {^{for options}}
-          <option value="{{:id}}">{{:name}}</option>
+          <option value="{% templatetag openvariable %}:id{% templatetag closevariable %}">{% templatetag openvariable %}:name{% templatetag closevariable %}</option>
         {{/for}}
       </select>
     </div>
