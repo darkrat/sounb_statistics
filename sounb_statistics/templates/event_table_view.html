@@ -403,6 +403,8 @@ $(document).ready(function() {
     </div>
     </div>
 </nav>
+<script id="tmp-readonly" type="text/x-jsrender">
+</script>
 
 <script id="tmp-input" type="text/x-jsrender">
   <div class="form-group w-100 p-3">
@@ -414,7 +416,7 @@ $(document).ready(function() {
 </script>
 
 <script id="tmp-select" type="text/x-jsrender">
-  <div class="form-group tpl-select">
+  <div class="form-group">
     <label for="{% templatetag openvariable %}:data{% templatetag closevariable %}" class="control-label col-xs-3">{% templatetag openvariable %}:title{% templatetag closevariable %}</label> 
     <div class="col-xs-9">
       <select id="{% templatetag openvariable %}:data{% templatetag closevariable %}" name="{% templatetag openvariable %}:data{% templatetag closevariable %}" class="select form-control">
@@ -427,7 +429,7 @@ $(document).ready(function() {
 </script>
 
 <script id="tmp-checkbox" type="text/x-jsrender">
-  <div class="form-group tpl-checkbox">
+  <div class="form-group">
     <label for="{% templatetag openvariable %}:data{% templatetag closevariable %}" class="control-label col-xs-3">{% templatetag openvariable %}:title{% templatetag closevariable %}</label> 
     <div class="col-xs-9">
       <label class="checkbox-inline">
@@ -439,21 +441,8 @@ $(document).ready(function() {
 </script>
 
 <script id="tmp-datepicker" type="text/x-jsrender">
-  <div class="form-group w-100 p-3">
-      <label for="{% templatetag openvariable %}:data{% templatetag closevariable %}" class="control-label">{% templatetag openvariable %}:title{% templatetag closevariable %}</label> 
-      <input id="{% templatetag openvariable %}:data{% templatetag closevariable %}" name="{% templatetag openvariable %}:data{% templatetag closevariable %}" type="text">
-    </div>
-  <div>
+{% templatetag openvariable %}:title{% templatetag closevariable %}:
+  TODO: https://www.jsviews.com/#samples/tag-controls/jqui/datepicker/variants
 </div>
 </script>
 <div class="overlay"></div>
-
-<div id="templates" class="hidden">
-
-   
-  <div class="form-group row">
-    <div class="col-xs-offset-3 col-xs-9">
-      <button name="submit" type="submit" class="btn btn-primary">Поиск</button>
-    </div>
-  </div>
-</div>
