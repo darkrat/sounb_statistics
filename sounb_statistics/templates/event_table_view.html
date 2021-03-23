@@ -265,6 +265,8 @@ $(document).ready(function() {
       {% comment %} fixedColumns: true, {% endcomment %}
       fixedHeader: true,
       responsive: true,
+      pageLength: 100,
+      orderCellsTop: true,
       dom: 'Bfrtip',        // Needs button container
       select: 'single',
       altEditor: true,     // Enable altEditor
@@ -310,6 +312,18 @@ $(document).ready(function() {
           });
         }
     });
+    $('#example thead tr:eq(1) th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Search '+title+'" class="column_search" />' );
+    } );
+    // Apply the search
+    $( '#example thead'  ).on( 'keyup', ".column_search",function () {
+   
+        table
+            .column( $(this).parent().index() )
+            .search( this.value )
+            .draw();
+    } );
   });
 });
 </script>
