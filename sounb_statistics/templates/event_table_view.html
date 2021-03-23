@@ -429,9 +429,9 @@ $(document).ready(function() {
     <label for="{% templatetag openvariable %}:data{% templatetag closevariable %}" class="control-label col-xs-3">{% templatetag openvariable %}:title{% templatetag closevariable %}</label> 
     <div class="col-xs-9">
       <select id="{% templatetag openvariable %}:data{% templatetag closevariable %}" name="{% templatetag openvariable %}:data{% templatetag closevariable %}" class="select form-control">
-        {^{for options}}
+        {^{for options{% templatetag closevariable %}
           <option value="{% templatetag openvariable %}:id{% templatetag closevariable %}">{% templatetag openvariable %}:name{% templatetag closevariable %}</option>
-        {{/for}}
+        {% templatetag openvariable %}/for{% templatetag closevariable %}
       </select>
     </div>
   </div>
