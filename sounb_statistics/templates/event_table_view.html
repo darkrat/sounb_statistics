@@ -473,9 +473,9 @@ $(document).ready(function() {
 
 <script id="tmp-input" type="text/x-jsrender">
   <div class="form-group">
-      <label for="{{:data}}" class="control-label col-xs-3">{{:title}}</label> 
+      <label for="{% templatetag openvariable %}:data{% templatetag closevariable %}" class="control-label col-xs-3">{% templatetag openvariable %}:title{% templatetag closevariable %}</label> 
       <div class="col-xs-9">
-        <input id="{{:data}}" name="{{:data}}" type="text" class="form-control">
+        <input id="{% templatetag openvariable %}:data{% templatetag closevariable %}" name="{% templatetag openvariable %}:data{% templatetag closevariable %}" type="text" class="form-control">
       </div>
     </div>
   <div>
