@@ -316,19 +316,7 @@ $(document).ready(function() {
   ];
   
   $.each(columns, function( index, value ) {
-    var template;
-    switch (value.type) {
-      case "readonly":
-        break;
-      case "select":
-        template = $.templates("#tmp-select");
-        break;
-      case "checkbox":
-        template = $.templates("#tmp-checkbox");
-        break;
-      default:
-        var template = $.templates("#tmp-input");
-    }
+    template = $.templates("#tmp-"+ value.type || "input");
     var htmlOutput = template.render(value);
     $("#search-form").append(htmlOutput);
   });
