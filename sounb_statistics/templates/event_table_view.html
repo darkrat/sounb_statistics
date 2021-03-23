@@ -31,6 +31,7 @@
 <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="https://www.jsviews.com/download/jsrender.min.js"></script>
 <script src="{% static 'js/dataTables.altEditor.free.js'%}" crossorigin="anonymous"></script>
 <style  type="text/css" >
   th { font-size: 12px; }
@@ -144,15 +145,22 @@ $(document).ready(function() {
   
 
  
+  var data = [
+    { 
+      data: "Title", 
+      title: "Название" 
+    },
+    { 
+      data: "Title2", 
+      title: "Название2" 
+    }
+  ];
 
-        var clone = $("#templates.tpl-input").clone();
-        clone.removeClass("tpl-input");
-        clone.find(".control-label").for("1");
-        clone.find(".control-label").value("input");
-        clone.find(".form-control").id("1");
-        clone.find(".form-control").name("1");
-        $("#search-form").append(clone);
+  var template = $.templates("#tmp-input");
 
+  var htmlOutput = template.render(data);
+
+  $("#search-form").html(htmlOutput);
 
   $("#sidebar").mCustomScrollbar({
         theme: "minimal"
@@ -207,7 +215,7 @@ $(document).ready(function() {
               {extend: 'pdf', text: 'PDF'}
           ];
   Promise.all(promises).then(()=>{
-    var columns = [
+  var columns = [
     { 
       data: "id", 
       title: "№", 
@@ -463,7 +471,16 @@ $(document).ready(function() {
     </ul>
 </nav>
 
-
+<script id="tmp-input" type="text/x-jsrender">
+  <div class="form-group">
+      <label for="{{:data}}" class="control-label col-xs-3">{{:title}}</label> 
+      <div class="col-xs-9">
+        <input id="{{:data}}" name="{{:data}}" type="text" class="form-control">
+      </div>
+    </div>
+  <div>
+</div>
+</script>
 <div class="overlay"></div>
 
 <div id="templates" class="hidden">
@@ -508,5 +525,4 @@ $(document).ready(function() {
       <button name="submit" type="submit" class="btn btn-primary">Поиск</button>
     </div>
   </div>
-</form>
 </div>
