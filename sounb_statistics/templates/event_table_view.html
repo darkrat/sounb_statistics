@@ -143,38 +143,6 @@ var language = {
 
 $(document).ready(function() {
   
-
-  $.each(columns, function( index, value ) {
-    switch (value.type) {
-      case "readonly":
-        break;
-      case "select":
-        break;
-      case "checkbox":
-        break;
-      default:
-        var template = $.templates("#tmp-input");
-        var htmlOutput = template.render(data);
-        $("#search-form").append(htmlOutput);
-    }
-  });
-  var data = [
-    { 
-      data: "Title", 
-      title: "Название" 
-    },
-    { 
-      data: "Title2", 
-      title: "Название2" 
-    }
-  ];
-
-  var template = $.templates("#tmp-input");
-
-  var htmlOutput = template.render(data);
-
-  $("#search-form").html(htmlOutput);
-
   $("#sidebar").mCustomScrollbar({
         theme: "minimal"
   });
@@ -355,7 +323,23 @@ $(document).ready(function() {
       }
     }
   ];
-    var table = $('#example').DataTable( {
+  
+  $.each(columns, function( index, value ) {
+    switch (value.type) {
+      case "readonly":
+        break;
+      case "select":
+        break;
+      case "checkbox":
+        break;
+      default:
+        var template = $.templates("#tmp-input");
+        var htmlOutput = template.render(data);
+        $("#search-form").append(htmlOutput);
+    }
+  });
+
+  var table = $('#example').DataTable( {
       ajax: {
         "url" : "api/operator/events",
         "type": "get",
