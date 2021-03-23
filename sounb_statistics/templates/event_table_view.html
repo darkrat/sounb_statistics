@@ -316,21 +316,21 @@ $(document).ready(function() {
   ];
   
   $.each(columns, function( index, value ) {
+    var template;
     switch (value.type) {
       case "readonly":
         break;
       case "select":
-        var template = $.templates("#tmp-select");
-        var htmlOutput = template.render(value);
-        $("#search-form").append(htmlOutput);
+        template = $.templates("#tmp-select");
         break;
       case "checkbox":
+        template = $.templates("#tmp-checkbox");
         break;
       default:
         var template = $.templates("#tmp-input");
-        var htmlOutput = template.render(value);
-        $("#search-form").append(htmlOutput);
     }
+    var htmlOutput = template.render(value);
+    $("#search-form").append(htmlOutput);
   });
 
   var table = $('#example').DataTable( {
@@ -438,11 +438,14 @@ $(document).ready(function() {
 </script>
 
 <script id="tmp-checkbox" type="text/x-jsrender">
-  <div class="form-group w-100 p-3">
-      <label for="{% templatetag openvariable %}:data{% templatetag closevariable %}" class="control-label">{% templatetag openvariable %}:title{% templatetag closevariable %}</label> 
-      <input id="{% templatetag openvariable %}:data{% templatetag closevariable %}" name="{% templatetag openvariable %}:data{% templatetag closevariable %}" type="text">
+  <div class="form-group tpl-checkbox">
+    <label for="{% templatetag openvariable %}:data{% templatetag closevariable %}" class="control-label col-xs-3">{% templatetag openvariable %}:title{% templatetag closevariable %}</label> 
+    <div class="col-xs-9">
+      <label class="checkbox-inline">
+        <input name="{% templatetag openvariable %}:data{% templatetag closevariable %}" type="checkbox" data-link="member"/>
+      </label>
     </div>
-  <div>
+  </div>
 </div>
 </script>
 
@@ -458,35 +461,7 @@ $(document).ready(function() {
 
 <div id="templates" class="hidden">
 
-
-  <div class="form-group tpl-select">
-    <label for="select" class="control-label col-xs-3">Select</label> 
-    <div class="col-xs-9">
-      <select id="select" name="select" class="select form-control">
-        <option value="rabbit">Rabbit</option>
-        <option value="duck">Duck</option>
-        <option value="fish">Fish</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="form-group tpl-checkbox">
-    <label for="checkbox" class="control-label col-xs-3">Checkboxes</label> 
-    <div class="col-xs-9">
-      <label class="checkbox-inline">
-        <input type="checkbox" name="checkbox" checked="checked" value="rabbit">
-              Rabbit
-      </label>
-      <label class="checkbox-inline">
-        <input type="checkbox" name="checkbox" value="duck">
-              Duck
-      </label>
-      <label class="checkbox-inline">
-        <input type="checkbox" name="checkbox" value="fish">
-              Fish
-      </label>
-    </div>
-  </div> 
+   
   <div class="form-group row">
     <div class="col-xs-offset-3 col-xs-9">
       <button name="submit" type="submit" class="btn btn-primary">Поиск</button>
